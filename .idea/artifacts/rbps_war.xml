@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="rbps:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="rbps.war">
+      <element id="artifact" artifact-name="rbps:war exploded" />
+    </root>
+  </artifact>
+</component>
