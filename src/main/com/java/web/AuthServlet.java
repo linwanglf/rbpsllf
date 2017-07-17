@@ -160,7 +160,7 @@ public class AuthServlet extends HttpServlet{
 				result.put("success", true);
 			}else{
 				result.put("success", true);
-				result.put("errorMsg", "����ʧ��");
+				result.put("errorMsg", "???????");
 			}
 			ResponseUtil.write(response, result);
 		}catch(Exception e){
@@ -193,7 +193,7 @@ public class AuthServlet extends HttpServlet{
 			con=dbUtil.getCon();
 			JSONObject result=new JSONObject();
 			if(!authDao.isLeaf(con, authId)){
-				result.put("errorMsg", "�ò˵��ڵ����ӽڵ㣬����ɾ��");
+				result.put("errorMsg", "错误");
 			}else{
 				int delNums=0;
 				sonNum=authDao.getAuthCountByParentId(con, parentId);
@@ -208,7 +208,7 @@ public class AuthServlet extends HttpServlet{
 				if(delNums>0){
 					result.put("success", true);
 				}else{
-					result.put("errorMsg", "ɾ��ʧ��");
+					result.put("errorMsg", "错误");
 				}
 			}
 			ResponseUtil.write(response, result);

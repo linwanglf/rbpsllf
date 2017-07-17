@@ -123,7 +123,7 @@ public class RoleServlet extends HttpServlet{
 				boolean f=userDao.existUserWithRoleId(con, str[i]);
 				if(f){
 					result.put("errorIndex", i);
-					result.put("errorMsg", "��ɫ�������û�������ɾ��");
+					result.put("errorMsg", "错误");
 					ResponseUtil.write(response, result);
 					return;
 				}
@@ -133,7 +133,7 @@ public class RoleServlet extends HttpServlet{
 				result.put("success", true);
 				result.put("delNums", delNums);
 			}else{
-				result.put("errorMsg", "ɾ��ʧ��");
+				result.put("errorMsg", "错误");
 			}
 			ResponseUtil.write(response, result);
 		}catch(Exception e){
@@ -171,7 +171,7 @@ public class RoleServlet extends HttpServlet{
             	result.put("success", true);
 			}else{
 				result.put("success", true);
-				result.put("errorMsg", "����ʧ��");
+				result.put("errorMsg", "错误");
 			}
 			ResponseUtil.write(response, result);
 		}catch(Exception e){
@@ -200,7 +200,7 @@ public class RoleServlet extends HttpServlet{
             if(updateNums>0){
             	result.put("success", true);
 			}else{
-				result.put("errorMsg", "��Ȩʧ��");
+				result.put("errorMsg", "错误");
 			}
 			ResponseUtil.write(response, result);
 		}catch(Exception e){
