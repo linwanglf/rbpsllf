@@ -211,10 +211,10 @@ public class UserServlet extends HttpServlet{
 			}
 			if(saveNums==-1){
 				result.put("success", true);
-				result.put("errorMsg", "���û����Ѿ�����");
+				result.put("errorMsg", "添加用户失败");
 			}else if(saveNums==0){
 				result.put("success", true);
-				result.put("errorMsg", "����ʧ��");
+				result.put("errorMsg", "用户添加成功");
 			}else{
 				result.put("success", true);
 			}
