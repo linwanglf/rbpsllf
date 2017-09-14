@@ -30,7 +30,7 @@
 				<br>
 				<li><span class="left">&nbsp;&nbsp;Username：&nbsp;&nbsp;</span>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<span style=""> <input id="userName" name="userName" type="text" class="txt" value="${userName }" /> </span></li>
 				<li><span class="left">&nbsp;&nbsp;Password：&nbsp;&nbsp;</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=""> <input id="password" name="password" type="password" class="txt" value="${password }" onkeydown= "if(event.keyCode==13)form1.submit()"/> </span></li>
-				 <li><span class="left">&nbsp;&nbsp;Verification：&nbsp;&nbsp;</span>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<span style=""> <input type="text" value="${imageCode }" name="imageCode"  class="txtCode" id="imageCode" size="10" onkeydown= "if(event.keyCode==13)form1.submit()"/>&nbsp;<img onclick="javascript:loadimage();"  title="换一张试试" name="randImage" id="randImage" src="images/image.jsp" width="60" height="20" border="1" align="absmiddle"> </span></li> 
+				<li><span class="left">&nbsp;&nbsp;Verification：&nbsp;&nbsp;</span>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<span style=""> <input type="text" value="${imageCode }" name="imageCode"  class="txtCode" id="imageCode" size="10" onkeydown= "if(event.keyCode==13)form1.submit()"/>&nbsp;<img onclick="javascript:loadimage();"  title="换一张试试" name="randImage" id="randImage" src="images/image.jsp" width="60" height="20" border="1" align="absmiddle"> </span></li>
 			</ul>
 			</li>
 			<li class="topE"></li>

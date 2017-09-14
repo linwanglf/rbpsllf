@@ -128,9 +128,9 @@ public class AuthServlet extends HttpServlet{
 		String authId=request.getParameter("authId");
 		String authName=request.getParameter("authName");
 		String authPath=request.getParameter("authPath");
-		String parentId =request.getParameter("parentId");
 		String authDescription=request.getParameter("authDescription");
 		String iconCls=request.getParameter("iconCls");
+		String parentId =request.getParameter("parentId");
 		Auth auth=new Auth(authName, authPath, authDescription, iconCls);
 		if(StringUtil.isNotEmpty(authId)){
 			auth.setAuthId(Integer.parseInt(authId));

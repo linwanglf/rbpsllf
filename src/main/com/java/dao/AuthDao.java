@@ -14,6 +14,16 @@ import com.java.util.StringUtil;
 
 public class AuthDao {
 
+	/**
+	 * 根据parentId,authId返回Menu对象
+	 * @param con
+	 * @param parentId
+	 * @param authIds
+	 * @return
+	 * @throws Exception
+	 */
+
+
 	public JSONArray getAuthByParentId(Connection con,String parentId,String authIds)throws Exception{
 		JSONArray jsonArray=new JSONArray();
 		String sql="select * from t_auth where parentId=? and authId in ("+authIds+")";
@@ -45,7 +55,15 @@ public class AuthDao {
 		ResultSet rs=pstmt.executeQuery();
 		return rs.next();
 	}
-	
+
+	/**
+	 * 返回所有的Menu
+	 * @param con
+	 * @param parentId
+	 * @param authIds
+	 * @return
+	 * @throws Exception
+	 */
 	public JSONArray getAuthsByParentId(Connection con,String parentId,String authIds)throws Exception{
 		JSONArray jsonArray=this.getAuthByParentId(con, parentId,authIds);
 		for(int i=0;i<jsonArray.size();i++){

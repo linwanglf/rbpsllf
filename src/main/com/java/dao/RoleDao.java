@@ -22,7 +22,14 @@ public class RoleDao {
 		}
 		return roleName;
 	}
-	
+
+	/**
+	 * 根据角色ID返回MenuID
+	 * @param con
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
 	public String getAuthIdsById(Connection con,int id)throws Exception{
 		String authIds=null;
 		String sql="select authIds from t_role where roleId=?";
