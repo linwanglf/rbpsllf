@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>sgop</title>
+<title>能源监控EMS</title>
 <%
 	if(session.getAttribute("currentUser")==null){
 		response.sendRedirect("login.jsp");
@@ -52,6 +52,7 @@
 			if($("#tabs").tabs("exists",node.text)){
 				$("#tabs").tabs("select",node.text);
 			}else{
+                console.log('node.attributes.authPath: ' + node.attributes.authPath);
 				var content="<iframe frameborder=0 scrolling='auto' style='width:100%;height:100%' src="+node.attributes.authPath+"></iframe>"
 				$("#tabs").tabs("add",{
 					title:node.text,
@@ -119,7 +120,7 @@
 <div region="center">
 	<div class="easyui-tabs" fit="true" border="false" id="tabs">
 		<div title="MainPage" data-options="iconCls:'icon-home'">
-			<div align="center" style="padding-top: 100px;"><font color="red" size="10">Welcome to SGOP </font></div>
+			<div align="center" style="padding-top: 100px;"><font color="red" size="10">Welcome to EMS </font></div>
 		</div>
 	</div>
 </div>

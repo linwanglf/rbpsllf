@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>sgop</title>
+<title>能源监控</title>
 <%
 	if(session.getAttribute("currentUser")==null){
 		response.sendRedirect("login.jsp");
@@ -52,6 +52,7 @@
 			if($("#tabs").tabs("exists",node.text)){
 				$("#tabs").tabs("select",node.text);
 			}else{
+                console.log('node.attributes.authPath: ' + node.attributes.authPath);
 				var content="<iframe frameborder=0 scrolling='auto' style='width:100%;height:100%' src="+node.attributes.authPath+"></iframe>"
 				$("#tabs").tabs("add",{
 					title:node.text,

@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class DbUtil {
 
-	private String dbUrl="jdbc:mysql://127.0.0.1:3306/sgopdb";
+	private String dbUrl="jdbc:mysql://127.0.0.1:3306/rbpsdb";
 	private String dbUserName="root";
 	private String dbPassword="root";
 	private String jdbcName="com.mysql.jdbc.Driver";
