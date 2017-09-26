@@ -149,13 +149,13 @@
 <div id="tb">
 	<div>
 		<a href="javascript:openUserAddDialog()" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
-		<a href="javascript:openUserModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
+		<%--<a href="javascript:openUserModifyDialog()" class="easyui-linkbutton" iconCls="icon-edit" plain="true" >修改</a>--%>
 		<a href="javascript:deleteUser()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 	</div>
 	<div>
 		&nbsp;字典类型：&nbsp;<input type="text" name="s_dictType" id="s_dictType" size="20" onkeydown="if(event.keyCode==13) searchUser()"/>
-		<%--&nbsp;用户角色：&nbsp;<input class="easyui-combobox" id="s_roleId" name="s_roleId" size="20" data-options="editable:false,panelHeight:'auto',valueField:'roleId',textField:'roleName',url:'role?action=comBoList'"/>--%>
-		&nbsp;支付状态：&nbsp;<select class="easyui-combobox" name="paystat" style="width:100px;"> <html:options dicttype="PAYSTAT">  </html:options></select>
+
+		&nbsp;支付状态(测试下拉标签)：&nbsp;<select class="easyui-combobox" name="paystat" style="width:100px;"> <html:options dicttype="PAYSTAT">  </html:options></select>
 		<a href="javascript:searchUser()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
 	</div>
 </div>

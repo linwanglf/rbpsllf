@@ -64,7 +64,7 @@
 		}
 	});
 	
-	
+
 	function modifyPassword(){
 		$("#fm").form("submit",{
 			url:url,
