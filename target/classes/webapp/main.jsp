@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>能源监控</title>
+<title>能源监控EMS</title>
 <%
 	if(session.getAttribute("currentUser")==null){
 		response.sendRedirect("login.jsp");
@@ -120,7 +120,7 @@
 <div region="center">
 	<div class="easyui-tabs" fit="true" border="false" id="tabs">
 		<div title="MainPage" data-options="iconCls:'icon-home'">
-			<div align="center" style="padding-top: 100px;"><font color="red" size="10">Welcome to SGOP </font></div>
+			<div align="center" style="padding-top: 100px;"><font color="red" size="10">Welcome to EMS </font></div>
 		</div>
 	</div>
 </div>

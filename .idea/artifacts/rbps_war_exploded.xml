@@ -7,6 +7,7 @@
           <element id="module-output" name="rbps" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.16.6" />
           <element id="library" level="project" name="Maven: net.sf.json-lib:json-lib:2.4" />
           <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.8.0" />
           <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
@@ -15,6 +16,7 @@
           <element id="library" level="project" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" />
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.18" />
+          <element id="library" level="project" name="Maven: javax.servlet.jsp:jsp-api:2.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
