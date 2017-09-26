@@ -1,9 +1,6 @@
 package com.java.tag;
 
 import com.java.dao.DictDao;
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.tagext.BodyTagSupport;
@@ -17,38 +14,31 @@ import java.util.Map;
  * Description:
  */
 
-@Setter
-@Getter
-public class OptionsTag  extends BodyTagSupport{
+public class OptionsTag  extends BodyTagSupport {
 
     // collection只是传递一个标识，具体下拉值内容是从数据库取还是从请求中得到为不同具体实现
-//    private String collection;
     private String dicttype;
-
-
-    DictDao dictDao = new DictDao();
-
+    private DictDao dictDao = new DictDao();
 
     @Override
     public int doStartTag() throws JspException {
         return EVAL_BODY_INCLUDE;
     }
+
     @Override
     public int doEndTag() throws JspException {
         try {
             StringBuffer results = new StringBuffer("");
             Map optionMap = dictDao.getDictByDictTypeId(dicttype);
-//            results.append("<option value=\"4\">4</option>");
-
-            Iterator<Map.Entry<String,String>> it = optionMap.entrySet().iterator();
-            while (it.hasNext()){
-                Map.Entry<String,String> entry =  it.next();
+            Iterator<Map.Entry<String, String>> it = optionMap.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry<String, String> entry = it.next();
                 results.append("<option value=\"");
                 results.append(entry.getKey());
                 results.append(" \">");
                 results.append(entry.getValue());
                 results.append("</option>");
-                System.out.println("results2: " + results );
+                System.out.println("results2: " + results);
             }
 
             pageContext.getOut().write(results.toString());
@@ -56,4 +46,5 @@ public class OptionsTag  extends BodyTagSupport{
             throw new JspTagException("错误");
         }
         return EVAL_PAGE;
+    }
 }

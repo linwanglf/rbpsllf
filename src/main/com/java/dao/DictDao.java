@@ -3,14 +3,16 @@ package com.java.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.java.model.PageBean;
 import com.java.model.Dict;
+import com.java.util.DbUtil;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 public class DictDao {
-
-
 	public ResultSet userList(Connection con,PageBean pageBean,Dict dict)throws Exception{
 		StringBuffer sb=new StringBuffer("select * from t_sym_dict u  ");
 		if(pageBean!=null){
@@ -18,6 +20,28 @@ public class DictDao {
 		}
 		PreparedStatement pstmt=con.prepareStatement(sb.toString());
 		return pstmt.executeQuery();
+	}
+
+
+	public Map getDictByDictTypeId(String dictTypeId){
+		Map<String,String > map =  new HashMap<String,String>();
+
+		String sql="select DICT_NAME,DICT_DESC from t_sym_dict where DICT_TYPEID=?";
+		try {
+			DbUtil dbUtil = new DbUtil();
+			Connection con = dbUtil.getCon();
+			PreparedStatement pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, dictTypeId);
+			ResultSet rs=pstmt.executeQuery();
+			while (rs.next()){
+				map.put(rs.getString("DICT_NAME"),rs.getString("DICT_DESC"));
+			}
+
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
+		return  map;
 	}
 	
 	
