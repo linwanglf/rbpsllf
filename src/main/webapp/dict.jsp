@@ -21,8 +21,8 @@
 	
 	function searchUser(){
 		$('#dg').datagrid('load',{
-			s_userName:$("#s_userName").val(),
-			s_roleId:$('#s_roleId').combobox("getValue")
+            s_dictType:$("#s_dictType").val(),
+//			s_roleId:$('#s_roleId').combobox("getValue")
 		});
 	}
 	
@@ -133,14 +133,14 @@
     <thead>
     	<tr>
     		<th field="cb" checkbox="true" align="center"></th>
-    		<th field="dictId" width="50" align="center">编号</th>
-    		<th field="dictType" width="100" align="center">字典类型</th>
-    		<th field="dictName" width="100" align="center">字典名</th>
-    		<th field="dictDesc" width="150" align="center" hidden="true">字典值</th>
+    		<th field="dict_id" width="50" align="center">编号</th>
+    		<th field="dict_type" width="100" align="center">字典类型</th>
+    		<th field="dict_name" width="100" align="center">字典名</th>
+    		<th field="dict_desc" width="150" align="center" hidden="true">字典值</th>
 			<th field="state" width="150" align="center" >状态</th>
-    		<th field="showSeq" width="150" align="center">显示顺序</th>
-    		<th field="isDefault" width="300" align="center">是否默认</th>
-			<th field="canModify" width="300" align="center">能否修改</th>
+    		<th field="SHOW_SEQ" width="150" align="center">显示顺序</th>
+    		<th field="IS_DEFAULT" width="300" align="center">是否默认</th>
+			<th field="CAN_MODIFY" width="300" align="center">能否修改</th>
     	</tr>
     </thead>
 </table>
@@ -151,8 +151,8 @@
 		<a href="javascript:deleteUser()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 	</div>
 	<div>
-		&nbsp;用户名：&nbsp;<input type="text" name="s_userName" id="s_userName" size="20" onkeydown="if(event.keyCode==13) searchUser()"/>
-		&nbsp;用户角色：&nbsp;<input class="easyui-combobox" id="s_roleId" name="s_roleId" size="20" data-options="editable:false,panelHeight:'auto',valueField:'roleId',textField:'roleName',url:'role?action=comBoList'"/>
+		&nbsp;字典类型：&nbsp;<input type="text" name="s_dictType" id="s_dictType" size="20" onkeydown="if(event.keyCode==13) searchUser()"/>
+		<%--&nbsp;用户角色：&nbsp;<input class="easyui-combobox" id="s_roleId" name="s_roleId" size="20" data-options="editable:false,panelHeight:'auto',valueField:'roleId',textField:'roleName',url:'role?action=comBoList'"/>--%>
 		<a href="javascript:searchUser()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
 	</div>
 </div>

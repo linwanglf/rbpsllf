@@ -6,21 +6,8 @@
     <jsp-version>1.2</jsp-version>  <!-- 标签库要求的JSP规范版本 -->
     <short-name>html</short-name>   <!-- JSP页面编写工具可以用来创建助记名的可选名字 -->
     <tag>
-        <name>select</name>
-        <tag-class>com.sg3f.jsptag.SelectTag</tag-class>
-        <body-content>JSP</body-content>
-        <attribute>
-            <name>name</name>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>style</name>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
-    <tag>
         <name>options</name>
-        <tag-class>com.sg3f.jsptag.OptionsTag</tag-class>
+        <tag-class>com.java.tag.OptionsTag</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>dicttype</name>
@@ -32,21 +19,5 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
-    <tag>
-        <name>selectDisplay</name>
-        <tag-class>com.sg3f.jsptag.SelectDisplay</tag-class>
-        <body-content>JSP</body-content>
-        <attribute>
-            <name>collection</name>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>name</name>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-        <attribute>
-            <name>value</name>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>
-    </tag>
+
 </taglib>

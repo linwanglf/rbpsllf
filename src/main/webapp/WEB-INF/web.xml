@@ -49,12 +49,13 @@
 
 
   <servlet>
-    <servlet-name>regionServlet</servlet-name>
-    <servlet-class>com.java.web.RegionServlet</servlet-class>
+    <servlet-name>dictServlet</servlet-name>
+    <servlet-class>com.java.web.DictServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>regionServlet</servlet-name>
-    <url-pattern>/region</url-pattern>
+    <servlet-name>dictServlet</servlet-name>
+    <url-pattern>/dict</url-pattern>
   </servlet-mapping>
+
 </web-app>

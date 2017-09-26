@@ -11,13 +11,15 @@ import com.java.model.Dict;
 import com.java.util.DbUtil;
 import lombok.extern.slf4j.Slf4j;
 
+
 @Slf4j
 public class DictDao {
-	public ResultSet userList(Connection con,PageBean pageBean,Dict dict)throws Exception{
+	public ResultSet dictList(Connection con,PageBean pageBean,Dict dict)throws Exception{
 		StringBuffer sb=new StringBuffer("select * from t_sym_dict u  ");
 		if(pageBean!=null){
 			sb.append(" limit "+pageBean.getStart()+","+pageBean.getRows());
 		}
+		log.info(" dictList {}",sb );
 		PreparedStatement pstmt=con.prepareStatement(sb.toString());
 		return pstmt.executeQuery();
 	}
@@ -27,6 +29,7 @@ public class DictDao {
 		Map<String,String > map =  new HashMap<String,String>();
 
 		String sql="select DICT_NAME,DICT_DESC from t_sym_dict where DICT_TYPEID=?";
+		log.info(" getDictByDictTypeId {}",sql );
 		try {
 			DbUtil dbUtil = new DbUtil();
 			Connection con = dbUtil.getCon();
@@ -45,8 +48,9 @@ public class DictDao {
 	}
 	
 	
-	public int userCount(Connection con,Dict dict)throws Exception{
+	public int dictCount(Connection con,Dict dict)throws Exception{
 		StringBuffer sb=new StringBuffer("select count(*) as total from t_sym_dict u ");
+		log.info(" Sql {}",sb );
 		PreparedStatement pstmt=con.prepareStatement(sb.toString());
 		ResultSet rs=pstmt.executeQuery();
 		if(rs.next()){
@@ -81,6 +85,7 @@ public class DictDao {
 	
 	public int userDelete(Connection con,String dictId)throws Exception{
 		String sql="delete from t_sym_dict where dict_id in ("+dictId+")";
+		log.info(" Sql {}",sql );
 		PreparedStatement pstmt=con.prepareStatement(sql);
 		return pstmt.executeUpdate();
 	}
