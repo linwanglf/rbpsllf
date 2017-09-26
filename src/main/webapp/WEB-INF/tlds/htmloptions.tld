@@ -5,6 +5,7 @@
     <tlib-version>1.0</tlib-version><!-- 标签库版本 -->
     <jsp-version>1.2</jsp-version>  <!-- 标签库要求的JSP规范版本 -->
     <short-name>html</short-name>   <!-- JSP页面编写工具可以用来创建助记名的可选名字 -->
+
     <tag>
         <name>options</name>
         <tag-class>com.java.tag.OptionsTag</tag-class>

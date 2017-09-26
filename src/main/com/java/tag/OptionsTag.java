@@ -1,6 +1,9 @@
 package com.java.tag;
 
 import com.java.dao.DictDao;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.tagext.BodyTagSupport;
@@ -14,6 +17,8 @@ import java.util.Map;
  * Description:
  */
 
+@Setter
+@Getter
 public class OptionsTag  extends BodyTagSupport {
 
     // collection只是传递一个标识，具体下拉值内容是从数据库取还是从请求中得到为不同具体实现
@@ -38,9 +43,9 @@ public class OptionsTag  extends BodyTagSupport {
                 results.append(" \">");
                 results.append(entry.getValue());
                 results.append("</option>");
-                System.out.println("results2: " + results);
-            }
 
+            }
+            System.out.println("results: " + results);
             pageContext.getOut().write(results.toString());
         } catch (IOException ex) {
             throw new JspTagException("错误");

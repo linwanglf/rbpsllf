@@ -7,6 +7,14 @@
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
 
+  <jsp-config>
+    <taglib>
+      <taglib-uri>/tld/options</taglib-uri>
+      <taglib-location>/WEB-INF/tlds/htmloptions.tld</taglib-location>
+    </taglib>
+  </jsp-config>
+
+
   <servlet>
     <servlet-name>userServlet</servlet-name>
     <servlet-class>com.java.web.UserServlet</servlet-class>

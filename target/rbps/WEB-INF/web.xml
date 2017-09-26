@@ -7,6 +7,14 @@
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
 
+  <jsp-config>
+    <taglib>
+      <taglib-uri>/tld/options</taglib-uri>
+      <taglib-location>/WEB-INF/tlds/htmloptions.tld</taglib-location>
+    </taglib>
+  </jsp-config>
+
+
   <servlet>
     <servlet-name>userServlet</servlet-name>
     <servlet-class>com.java.web.UserServlet</servlet-class>
@@ -49,12 +57,13 @@
 
 
   <servlet>
-    <servlet-name>regionServlet</servlet-name>
-    <servlet-class>com.java.web.RegionServlet</servlet-class>
+    <servlet-name>dictServlet</servlet-name>
+    <servlet-class>com.java.web.DictServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>regionServlet</servlet-name>
-    <url-pattern>/region</url-pattern>
+    <servlet-name>dictServlet</servlet-name>
+    <url-pattern>/dict</url-pattern>
   </servlet-mapping>
+
 </web-app>

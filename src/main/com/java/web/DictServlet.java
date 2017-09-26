@@ -93,20 +93,26 @@ public class DictServlet extends HttpServlet {
 
 	private void save(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		String userName=request.getParameter("userName");
-//		String password=request.getParameter("password");
-//		String roleId=request.getParameter("roleId");
-//		String userDescription=request.getParameter("userDescription");
-//		String userId=request.getParameter("userId");
-//		User user=new User(userName, password, Integer.parseInt(roleId), userDescription);
+		String dictType=request.getParameter("dictType");
+		String dictName=request.getParameter("dictName");
+//		String dictId=request.getParameter("dictId");
+		String dictDesc=request.getParameter("dictDesc");
+		String isDefault=request.getParameter("isDefault");
+
+		Dict dict=new Dict();
+		dict.setDictType(dictType);
+		dict.setDictName(dictName);
+		dict.setDictDesc(dictDesc);
+		dict.setIsDefault(isDefault);
+
 //		if(StringUtil.isNotEmpty(userId)){
 //			user.setUserId(Integer.parseInt(userId));
 //		}
-//		Connection con=null;
-//		try{
-//			JSONObject result=new JSONObject();
-//			con=dbUtil.getCon();
-//			int saveNums=0;
+		Connection con=null;
+		try{
+			JSONObject result=new JSONObject();
+			con=dbUtil.getCon();
+			int saveNums=0;
 //			if(StringUtil.isNotEmpty(userId)){
 //				saveNums=userDao.userUpdate(con, user);
 //			}else{
@@ -115,56 +121,59 @@ public class DictServlet extends HttpServlet {
 //				}else{
 //					saveNums=userDao.userAdd(con, user);
 //				}
+
 //			}
-//			if(saveNums==-1){
-//				result.put("success", true);
-//				result.put("errorMsg", "添加用户失败");
-//			}else if(saveNums==0){
-//				result.put("success", true);
-//				result.put("errorMsg", "用户添加成功");
-//			}else{
-//				result.put("success", true);
-//			}
-//			ResponseUtil.write(response, result);
-//		}catch(Exception e){
-//			e.printStackTrace();
-//		}finally{
-//			try {
-//				dbUtil.closeCon(con);
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
+			saveNums = dictDao.dictAdd(con,dict);
+			if(saveNums==-1){
+				result.put("success", true);
+				result.put("errorMsg", "添加字典失败");
+			}else if(saveNums==0){
+				result.put("success", true);
+				result.put("errorMsg", "添加字典成功");
+			}else{
+				result.put("success", true);
+			}
+			ResponseUtil.write(response, result);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try {
+				dbUtil.closeCon(con);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	private void delete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		String delIds=request.getParameter("delIds");
-//		Connection con=null;
-//		try{
-//			con=dbUtil.getCon();
-//			JSONObject result=new JSONObject();
-//			int delNums=userDao.userDelete(con, delIds);
-//			if(delNums>0){
-//				result.put("success", true);
-//				result.put("delNums", delNums);
-//			}else{
-//				result.put("errorMsg", "ɾ��ʧ��");
-//			}
-//			ResponseUtil.write(response, result);
-//		}catch(Exception e){
-//			e.printStackTrace();
-//		}finally{
-//			try {
-//				dbUtil.closeCon(con);
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-//	}
-
+		log.info("Start delete Dict ");
+		String dictIds=request.getParameter("dictId");
+		Connection con=null;
+		try{
+			con=dbUtil.getCon();
+			JSONObject result=new JSONObject();
+			int delNums=dictDao.dictDelete(con, dictIds);
+			if(delNums>0){
+				result.put("success", true);
+				result.put("delNums", delNums);
+			}else{
+				result.put("errorMsg", "delete failed");
+			}
+			ResponseUtil.write(response, result);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try {
+				dbUtil.closeCon(con);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
+
+
 
 }

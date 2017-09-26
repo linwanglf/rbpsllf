@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"		 pageEncoding="utf-8"%>
+<%@ taglib uri="/tld/options" prefix="html"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,9 +28,9 @@
 	}
 	
 	function openUserAddDialog(){
-		$("#dlg").dialog("open").dialog("setTitle","添加用户信息");
-		$("#userName").removeAttr("readonly");
-		url="user?action=save";
+		$("#dlg").dialog("open").dialog("setTitle","添加字典信息");
+//		$("#userName").removeAttr("readonly");
+		url="dict?action=save";
 	}
 	
 	function openUserModifyDialog(){
@@ -109,12 +110,13 @@
 		}
 		var strIds=[];
 		for(var i=0;i<selectedRows.length;i++){
-			strIds.push(selectedRows[i].userId);
+		    console.log("selectedRows[i].dict_id " +  selectedRows[i].dict_id );
+			strIds.push(selectedRows[i].dict_id);
 		}
 		var ids=strIds.join(",");
 		$.messager.confirm("系统提示","您确认要删除这<font color=red>"+selectedRows.length+"</font>条数据吗？",function(r){
 			if(r){
-				$.post("user?action=delete",{delIds:ids},function(result){
+				$.post("dict?action=delete",{dictId:ids},function(result){
 					if(result.success){
 						$.messager.alert('系统提示',"您已成功删除<font color=red>"+result.delNums+"</font>条数据！");
 						$("#dg").datagrid("reload");
@@ -136,7 +138,7 @@
     		<th field="dict_id" width="50" align="center">编号</th>
     		<th field="dict_type" width="100" align="center">字典类型</th>
     		<th field="dict_name" width="100" align="center">字典名</th>
-    		<th field="dict_desc" width="150" align="center" hidden="true">字典值</th>
+    		<th field="dict_desc" width="150" align="center">字典值</th>
 			<th field="state" width="150" align="center" >状态</th>
     		<th field="SHOW_SEQ" width="150" align="center">显示顺序</th>
     		<th field="IS_DEFAULT" width="300" align="center">是否默认</th>
@@ -153,6 +155,7 @@
 	<div>
 		&nbsp;字典类型：&nbsp;<input type="text" name="s_dictType" id="s_dictType" size="20" onkeydown="if(event.keyCode==13) searchUser()"/>
 		<%--&nbsp;用户角色：&nbsp;<input class="easyui-combobox" id="s_roleId" name="s_roleId" size="20" data-options="editable:false,panelHeight:'auto',valueField:'roleId',textField:'roleName',url:'role?action=comBoList'"/>--%>
+		&nbsp;支付状态：&nbsp;<select class="easyui-combobox" name="paystat" style="width:100px;"> <html:options dicttype="PAYSTAT">  </html:options></select>
 		<a href="javascript:searchUser()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
 	</div>
 </div>
@@ -162,22 +165,21 @@
   <form id="fm" method="post">
   	<table cellspacing="5px;">
   		<tr>
-  			<td>用户名：</td>
-  			<td><input type="text" id="userName" name="userName" class="easyui-validatebox" required="true"/></td>
+  			<td>字典类型：</td>
+  			<td><input type="text" id="dictType" name="dictType" class="easyui-validatebox" required="true"/></td>
   			<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-  			<td>用户密码：</td>
-  			<td><input type="text" id="password" name="password" class="easyui-validatebox" required="true"/></td>
+  			<td>字典名称：</td>
+  			<td><input type="text" id="dictName" name="dictName" class="easyui-validatebox" required="true"/></td>
   		</tr>
   		<tr>
-  			<td>角色名称：</td>
-  			<td><input type="hidden" id="roleId" name="roleId" /><input type="text" id="roleName" name="roleName" readonly="readonly" class="easyui-validatebox" required="true"/></td>
-  			<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-  			<td colspan="2"><a href="javascript:openRoleChooseDialog()" class="easyui-linkbutton" >选择角色</a></td>
+  			<td>字典值：</td>
+  			<td><input type="hidden" id="dictId" name="dictId" />
+				<input type="text" id="dictDesc" name="dictDesc" class="easyui-validatebox" required="true"/></td>
   		</tr>
   		<tr>
-  			<td valign="top">备注：</td>
+  			<td valign="top">默认：</td>
   			<td colspan="4">
-  				<textarea rows="7" cols="50" name="userDescription" id="userDescription"></textarea>
+  				<textarea rows="7" cols="50" name="isDefault" id="isDefault"></textarea>
   			</td>
   		</tr>
   	</table>
@@ -197,7 +199,7 @@
   	<a href="javascript:searchRole()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
   </div>
   <div style="height: 350px;">
-  	<table id="dg2" title="查询结果" class="easyui-datagrid" fitColumns="true" 
+  	<table id="dg2" title="查询结果" class="easyui-datagrid" fitColumns="true"
     pagination="true" rownumbers="true" url="role?action=list" singleSelect="true" fit="true" >
     <thead>
     	<tr>
