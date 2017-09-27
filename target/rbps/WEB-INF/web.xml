@@ -66,4 +66,53 @@
     <url-pattern>/dict</url-pattern>
   </servlet-mapping>
 
+
+  <servlet>
+    <servlet-name>regionServlet</servlet-name>
+    <servlet-class>com.java.web.RegionServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>regionServlet</servlet-name>
+    <url-pattern>/freightTemplate/queryRegionList</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>provinceServlet</servlet-name>
+    <servlet-class>com.java.web.ProvinceServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>provinceServlet</servlet-name>
+    <url-pattern>/freightTemplate/queryProvinceList</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>cityServlet</servlet-name>
+    <servlet-class>com.java.web.CityServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>cityServlet</servlet-name>
+    <url-pattern>/freightTemplate/queryCityList</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>areaServlet</servlet-name>
+    <servlet-class>com.java.web.AreaServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>areaServlet</servlet-name>
+    <url-pattern>/freightTemplate/queryAreaList</url-pattern>
+  </servlet-mapping>
+
+
+
+
+
+
 </web-app>

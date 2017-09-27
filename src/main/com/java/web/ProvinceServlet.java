@@ -1,7 +1,9 @@
 package com.java.web;
 
 
+import com.java.dao.ProvinceDao;
 import com.java.dao.RegionDao;
+import com.java.model.Province;
 import com.java.model.Region;
 import com.java.util.DbUtil;
 import com.java.util.JsonUtil;
@@ -15,17 +17,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
 
 /**
  * Created by xxjs-gd-llf
  * DATETIME:2017/9/27 17:30
  * Description:
  */
-public class RegionServlet extends HttpServlet {
+public class ProvinceServlet extends HttpServlet {
 
 	DbUtil dbUtil=new DbUtil();
-	RegionDao regionDao=new RegionDao();
+	ProvinceDao provinceDao=new ProvinceDao();
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -45,14 +46,18 @@ public class RegionServlet extends HttpServlet {
 	private void comBoList(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Connection con=null;
+		String regioncode = request.getParameter("regioncode");
+		Province province = new Province();
+		province.setRegioncode(regioncode);
 		try{
 			con=dbUtil.getCon();
 			JSONArray jsonArray=new JSONArray();
 			JSONObject jsonObject=new JSONObject();
-			jsonObject.put("regioncode", "");
-			jsonObject.put("regionname", "select...");
+			jsonObject.put("provincecode", "");
+			jsonObject.put("provincename", "select...");
 			jsonArray.add(jsonObject);
-			jsonArray.addAll(JsonUtil.formatRsToJsonArray(regionDao.regionList(con,null,new Region())));
+
+			jsonArray.addAll(JsonUtil.formatRsToJsonArray(provinceDao.provinceList(con,null,province)));
 			System.out.println("jsonArray: " + jsonArray.toString());
 			ResponseUtil.write(response, jsonArray);
 		}catch(Exception e){
