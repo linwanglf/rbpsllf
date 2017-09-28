@@ -111,6 +111,17 @@
   </servlet-mapping>
 
 
+  <servlet>
+    <servlet-name>testdynamicchartServlet</servlet-name>
+    <servlet-class>com.java.web.TestDynamicChartServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>testdynamicchartServlet</servlet-name>
+    <url-pattern>/testdynamicchart</url-pattern>
+  </servlet-mapping>
+
+
 
 
 
