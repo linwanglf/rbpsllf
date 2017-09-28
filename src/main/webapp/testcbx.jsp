@@ -19,7 +19,7 @@
         function showvalue() {
             alert('here');
             var value = $('#state').combobox('getValue'); //option 里的Value
-            var Text =  $('#state').combobox('getText'); //下拉框里看到的Text
+            var Text =  $('#state').combobox('getText'); //下拉框里看到的Text注意大小写
             alert(value);
             alert(Text);
         }
