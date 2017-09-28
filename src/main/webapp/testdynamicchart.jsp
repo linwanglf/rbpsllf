@@ -21,42 +21,72 @@
     <script type="text/javascript" src="highchart/code/modules/exporting.js"></script>　
     <!--highchart基础图-->
 
+    <script type="text/javascript">
+        function displaychart() {
+            var options = {
+                chart : {
+                    type : 'column' , //指定图表的类型，默认是折线图（line）
+                    renderTo: 'container'
+                },
+                title : {
+                    text : 'My first Highcharts chart' //指定图表标题
+                },
+                xAxis : {
+                    categories : [ 'my', 'first', 'chart' ] //指定x轴分组
+                },
+                yAxis : {
+                    title : {
+                        text : 'something'   // 指定y轴的标题
+                    }
+                },
+                series : [ ]  //指定数据列,这里设为空，我们从后台拿数据
+            };
 
+            //从后台获取json格式的数据,在web.xml中配置了/testdynamicchart请求，处理类为TestDynamicChartServlet
+            $.getJSON("testdynamicchart" , function(data) {
+                //插入Json数据
+                options.series = data;
+                //初始化chart
+                var chart = new Highcharts.Chart(options);
+            })
+
+        }
+//        $(function() {
+//            var options = {
+//                chart : {
+//                    type : 'column' , //指定图表的类型，默认是折线图（line）
+//                    renderTo: 'container'
+//                },
+//                title : {
+//                    text : 'My first Highcharts chart' //指定图表标题
+//                },
+//                xAxis : {
+//                    categories : [ 'my', 'first', 'chart' ] //指定x轴分组
+//                },
+//                yAxis : {
+//                    title : {
+//                        text : 'something'   // 指定y轴的标题
+//                    }
+//                },
+//                series : [ ]  //指定数据列,这里设为空，我们从后台拿数据
+//            };
+//
+//            //从后台获取json格式的数据,在web.xml中配置了/testdynamicchart请求，处理类为TestDynamicChartServlet
+//            $.getJSON("testdynamicchart" , function(data) {
+//                //插入Json数据
+//                options.series = data;
+//                //初始化chart
+//                var chart = new Highcharts.Chart(options);
+//            });
+//
+//        });
+    </script>
 </head>
 <body>
 <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
-<script type="text/javascript">
-    $(function() {
-
-        var options = {
-            chart : {
-                type : 'column' , //指定图表的类型，默认是折线图（line）
-                renderTo: 'container'
-            },
-            title : {
-                text : 'My first Highcharts chart' //指定图表标题
-            },
-            xAxis : {
-                categories : [ 'my', 'first', 'chart' ] //指定x轴分组
-            },
-            yAxis : {
-                title : {
-                    text : 'something'   // 指定y轴的标题
-                }
-            },
-            series : [ ]  //指定数据列,这里设为空，我们从后台拿数据
-        };
-
-        //从后台获取json格式的数据,在web.xml中配置了/testdynamicchart请求，处理类为TestDynamicChartServlet
-        $.getJSON("testdynamicchart" , function(data) {
-            //插入Json数据
-            options.series = data;
-            //初始化chart
-            var chart = new Highcharts.Chart(options);
-        });
-
-    });
-</script>
+<tr>
+    <a href="javascript:displaychart()" class="easyui-linkbutton" iconCls="icon-cancel" >显示图表</a>
+</tr>
 </body>
 
 </html>
