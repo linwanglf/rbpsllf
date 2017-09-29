@@ -3,7 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <title>Column柱状图</title>
+    <title>line曲线图</title>
     <!-- 引入JQuery -->
     <script type="text/javascript" src="../jquery-easyui-1.3.3/jquery.min.js"></script>
     <!-- 引入EasyUI -->
@@ -23,45 +23,40 @@
 
     <script type="text/javascript">
         function displaychart(){
-            $.getJSON("/chart/piechart" , function(data) {
-//                var json = {"a":1,"b":2,"c":3,"d":4};
-                var jsondata = [];
-                for (var i in data){
-                    jsondata.push([i, data[i]])
-                }
-                var chart = new Highcharts.Chart({
-                    chart: {
-                        plotBackgroundColor: null,
-                        plotBorderWidth: null,
-                        plotShadow: false,
-                        type: 'pie',
-                        renderTo: 'container'
-                    },
+            $.getJSON("/chart/linechart" , function(jsondata) {
+//                var jsondata = [{"data": [1, 0, 4, 8, 20, 30, 22, 33, 20, 18, 29], "name": "GuangZhou"}];
+                var chart = new Highcharts.Chart('container', {
                     title: {
-                        text: '饼图Demo'
+                        text: '不同城市的月平均气温',
+                        x: -20
                     },
-                    credits: {
-                        text: 'www.yechoor.cn'
+                    subtitle: {
+                        text: '数据来源: WorldClimate.com',
+                        x: -20
+                    },
+                    xAxis: {
+                        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+                    },
+                    yAxis: {
+                        title: {
+                            text: '温度 (°C)'
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 1,
+                            color: '#808080'
+                        }]
                     },
                     tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        valueSuffix: '°C'
                     },
-                    plotOptions: {
-                        pie: {
-                            allowPointSelect: true,
-                            cursor: 'pointer',
-                            dataLabels: {
-                                enabled: true,
-                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                            },
-                            showInLegend: true
-                        },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle',
+                        borderWidth: 0
                     },
-                    series: [{
-                        name: "blog percent",
-                        colorByPoint: true,
-                        data:jsondata
-                    }]
+                    series: jsondata
                 });
             });
         }
@@ -70,7 +65,7 @@
 <body>
 <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
 <tr>
-    <a href="javascript:displaychart()" class="easyui-linkbutton" iconCls="icon-cancel" >显示饼图</a>
+    <a href="javascript:displaychart()" class="easyui-linkbutton" iconCls="icon-cancel" >显示曲线图</a>
 </tr>
 </body>
 

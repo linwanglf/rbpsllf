@@ -118,10 +118,29 @@
 
   <servlet-mapping>
     <servlet-name>testcolumnServlet</servlet-name>
-    <url-pattern>/chart/testcolumn</url-pattern>
+    <url-pattern>/chart/columnchart</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>pieServlet</servlet-name>
+    <servlet-class>com.java.web.PieServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>pieServlet</servlet-name>
+    <url-pattern>/chart/piechart</url-pattern>
   </servlet-mapping>
 
 
+  <servlet>
+    <servlet-name>lineServlet</servlet-name>
+    <servlet-class>com.java.web.LineServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>lineServlet</servlet-name>
+    <url-pattern>/chart/linechart</url-pattern>
+  </servlet-mapping>
 
 
 

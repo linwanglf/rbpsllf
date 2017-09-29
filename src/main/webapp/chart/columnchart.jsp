@@ -3,7 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <title>Column柱状图</title>
+    <title>柱状图</title>
     <!-- 引入JQuery -->
     <script type="text/javascript" src="../jquery-easyui-1.3.3/jquery.min.js"></script>
     <!-- 引入EasyUI -->
@@ -29,7 +29,7 @@
                      renderTo: 'container'
                 },
                 title : {
-                    text : 'My first Highcharts chart' //指定图表标题
+                    text : '柱图Demo' //指定图表标题
                 },
                 subtitle :{
                     text : ' SubTitle ' //指定副标题
@@ -52,7 +52,7 @@
             };
 
             //从后台获取json格式的数据,在web.xml中配置了/testdynamicchart请求，处理类为TestDynamicChartServlet
-            $.getJSON("/chart/testcolumn" , function(data) {
+            $.getJSON("/chart/columnchart" , function(data) {
                 //插入Json数据
                 options.series = data;
                 var chart = new Highcharts.Chart(options); //通过options中的render to 绑定容器
