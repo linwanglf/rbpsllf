@@ -20,7 +20,7 @@ import java.util.List;
  * Description:
  */
 @Slf4j
-public class TestDynamicChartServlet extends HttpServlet {
+public class TestColumnChartServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,7 +32,7 @@ public class TestDynamicChartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        log.info( DateUtil.getCurrent()  + " Start TestDynamicChartServlet ");
+        log.info( DateUtil.getCurrent()  + " Start TestColumnChartServlet ");
         request.setCharacterEncoding("utf-8");
         Simpledata data_jane = new Simpledata("Jane" , new Integer[]{1 , 0 , 4});
         Simpledata data_john = new Simpledata("Jone" , new Integer[]{5 , 7 , 3});
@@ -66,7 +66,7 @@ public class TestDynamicChartServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        log.info( DateUtil.getCurrent()  + " Finish TestDynamicChartServlet ");
+        log.info( DateUtil.getCurrent()  + " Finish TestColumnChartServlet ");
     }
 
 
