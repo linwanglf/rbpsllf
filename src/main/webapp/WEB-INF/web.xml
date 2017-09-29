@@ -121,7 +121,15 @@
     <url-pattern>/chart/testcolumn</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>pieServlet</servlet-name>
+    <servlet-class>com.java.web.PieServlet</servlet-class>
+  </servlet>
 
+  <servlet-mapping>
+    <servlet-name>pieServlet</servlet-name>
+    <url-pattern>/chart/piechart</url-pattern>
+  </servlet-mapping>
 
 
 

@@ -22,71 +22,47 @@
     <!--highchart基础图-->
 
     <script type="text/javascript">
-        function displaychart() {
-            $('#container').highcharts({
-                chart: {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false
-                },
-                title: {
-                    text: '扇区突出演示'
-                },
-                tooltip: {
-                    headerFormat: '{series.name}<br>',
-                    pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
-                },
-                plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                            style: {
-                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                            }
+        function displaychart(){
+            $.getJSON("/chart/piechart" , function(data) {
+//                var json = {"a":1,"b":2,"c":3,"d":4};
+                var jsondata = [];
+                for (var i in data){
+                    jsondata.push([i, data[i]])
+                }
+                var chart = new Highcharts.Chart({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie',
+                        renderTo: 'container'
+                    },
+                    title: {
+                        text: '含各标签的博客数量统计'
+                    },
+                    credits: {
+                        text: 'www.yechoor.cn'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            },
+                            showInLegend: true
                         },
-                        states: {
-                            hover: {
-                                enabled: false
-                            }
-                        },
-                        slicedOffset: 20,         // 突出间距
-                        point: {                  // 每个扇区是数据点对象，所以事件应该写在 point 下面
-                            events: {
-                                // 鼠标滑过是，突出当前扇区
-                                mouseOver: function() {
-                                    this.slice();
-                                },
-                                // 鼠标移出时，收回突出显示
-                                mouseOut: function() {
-                                    this.slice();
-                                },
-                                // 默认是点击突出，这里屏蔽掉
-                                click: function() {
-                                    return false;
-                                }
-                            }
-                        }
-                    }
-                },
-                series: [{
-                    type: 'pie',
-                    name: '浏览器访问量占比',
-                    data: [
-                        ['Firefox',   45.0],
-                        ['IE',       26.8],
-                        {
-                            name: 'Chrome',
-                            y: 12.8,
-                            sliced: true, // 突出显示这个点（扇区），用于强调。
-                        },//这里为什么又用{}可以
-                        ['Safari',    8.5],
-                        ['Opera',     6.2],
-                        ['其他',   0.7]
-                    ]
-                }]
+                    },
+                    series: [{
+                        name: "blog percent",
+                        colorByPoint: true,
+                        data:jsondata
+                    }]
+                });
             });
         }
     </script>
@@ -94,7 +70,7 @@
 <body>
 <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
 <tr>
-    <a href="javascript:displaychart()" class="easyui-linkbutton" iconCls="icon-cancel" >显示图表</a>
+    <a href="javascript:displaychart()" class="easyui-linkbutton" iconCls="icon-cancel" >显示饼图</a>
 </tr>
 </body>
 

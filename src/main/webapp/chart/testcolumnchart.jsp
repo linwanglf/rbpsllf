@@ -55,8 +55,6 @@
             $.getJSON("/chart/testcolumn" , function(data) {
                 //插入Json数据
                 options.series = data;
-//                alert(typeof(JSON.stringify(data) ));
-                //初始化chart
                 var chart = new Highcharts.Chart(options); //通过options中的render to 绑定容器
             })
 
@@ -66,7 +64,7 @@
 <body>
 <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
 <tr>
-    <a href="javascript:displaychart()" class="easyui-linkbutton" iconCls="icon-cancel" >显示图表</a>
+    <a href="javascript:displaychart()" class="easyui-linkbutton" iconCls="icon-cancel" >显示柱图</a>
 </tr>
 </body>
 
