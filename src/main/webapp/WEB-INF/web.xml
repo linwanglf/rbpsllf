@@ -144,5 +144,18 @@
 
 
 
+  <servlet>
+    <servlet-name>mixServlet</servlet-name>
+    <servlet-class>com.java.web.MixServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>mixServlet</servlet-name>
+    <url-pattern>/chart/mixchart</url-pattern>
+  </servlet-mapping>
+
+
+
+
 
 </web-app>

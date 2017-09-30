@@ -113,7 +113,7 @@
 
   <servlet>
     <servlet-name>testcolumnServlet</servlet-name>
-    <servlet-class>com.java.web.TestColumnChartServlet</servlet-class>
+    <servlet-class>com.java.web.ColumnServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
@@ -141,6 +141,19 @@
     <servlet-name>lineServlet</servlet-name>
     <url-pattern>/chart/linechart</url-pattern>
   </servlet-mapping>
+
+
+
+  <servlet>
+    <servlet-name>mixServlet</servlet-name>
+    <servlet-class>com.java.web.MixServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>mixServlet</servlet-name>
+    <url-pattern>/chart/mixchart</url-pattern>
+  </servlet-mapping>
+
 
 
 
