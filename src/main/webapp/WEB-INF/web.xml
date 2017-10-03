@@ -154,6 +154,17 @@
     <url-pattern>/chart/mixchart</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>excelServlet</servlet-name>
+    <servlet-class>com.java.web.ExcelServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>excelServlet</servlet-name>
+    <url-pattern>/excel/exportexcel</url-pattern>
+  </servlet-mapping>
+
+
 
 
 
