@@ -82,6 +82,7 @@ public class ExcelServlet extends HttpServlet {
         for(int i=0; i<strArray.length; i++ ){
             HSSFRow row=sheet.createRow(i+2);
             row.createCell(0).setCellValue(strArray[i].getName());
+            log.info("name{}",strArray[i].getName());
             row.createCell(1).setCellValue(strArray[i].getClassGrade());
             row.createCell(2).setCellValue(strArray[i].getScore());
             row.createCell(3).setCellValue(strArray[i].getExamTime());
