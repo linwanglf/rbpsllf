@@ -25,7 +25,6 @@ public class ScoreManager {
         List<ExamScore> list =  new ArrayList<>();
         try {
             ResultSet resultSet = examScoreDao.scoreList(dbUtil.getCon(),null);
-//            ExamScore examScore = new ExamScore();//这句要移到while里面，否则每次都输出的同一条记录
             while (resultSet.next()){
                 ExamScore examScore = new ExamScore();
                 examScore.setName(resultSet.getString("name"));
@@ -43,5 +42,17 @@ public class ScoreManager {
             System.out.println(ite.next().getName());
         }
         return list;
+    }
+
+    public void inportList(List<List<String>> list ){
+
+        try {
+            for (int i=0; i<list.size();i++ ){
+                examScoreDao.scoreAdd(dbUtil.getCon(),(List)list.get(i));//按行处理
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

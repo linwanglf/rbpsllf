@@ -25,7 +25,7 @@ import java.util.Map;
 /**
  * Created by xxjs-gd-llf
  * DATETIME:2017/9/29 14:22
- * Description:
+ * Description:输出Excel
  */
 @Slf4j
 public class ExcelServlet extends HttpServlet {
@@ -67,14 +67,6 @@ public class ExcelServlet extends HttpServlet {
         row2.createCell(1).setCellValue("班级");
         row2.createCell(2).setCellValue("笔试成绩");
         row2.createCell(3).setCellValue("考试时间");
-//
-//        //在sheet里创建第三行
-//        HSSFRow row3=sheet.createRow(2);
-//        row3.createCell(0).setCellValue("李明");
-//        row3.createCell(1).setCellValue("As178");
-//        row3.createCell(2).setCellValue(87);
-//        row3.createCell(3).setCellValue(78);
-//        //.....省略部分代码
 
         List<ExamScore> list = scoreManager.getScoreList();
         ExamScore[] strArray  = new ExamScore[list.size()];

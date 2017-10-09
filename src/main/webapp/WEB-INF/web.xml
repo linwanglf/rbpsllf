@@ -165,6 +165,17 @@
   </servlet-mapping>
 
 
+  <servlet>
+    <servlet-name>uploadServlet</servlet-name>
+    <servlet-class>com.java.web.UploadExcelServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>uploadServlet</servlet-name>
+    <url-pattern>/excel/uploadexcel</url-pattern>
+  </servlet-mapping>
+
+
 
 
 
