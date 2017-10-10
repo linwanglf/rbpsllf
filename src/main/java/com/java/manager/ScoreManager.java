@@ -44,7 +44,7 @@ public class ScoreManager {
         return list;
     }
 
-    public void inportList(List<List<String>> list ){
+    public void importExcelDbList(List<List<String>> list ){
 
         try {
             for (int i=0; i<list.size();i++ ){
@@ -53,6 +53,5 @@ public class ScoreManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }

@@ -48,9 +48,8 @@ public class UploadExcelServlet extends HttpServlet {
                 FileItem item = list.get(i);
                 if (item.getName().endsWith(".xls")||item.getName().endsWith(".xlsx")) {
                     // 说明是文件,不过这里最好限制一下
-                    //helper.importXls(item.getInputStream());
                     List<List<String>> result = ExcelUtil.importXlsx(item.getInputStream());//item转换成输入流
-                    scoreManager.inportList(result); //导入数据库
+                    scoreManager.importExcelDbList(result); //导入数据库
                     out.write("{\"result\":\"OK\"}"); //返回的JSON格式
                 } else {
                     // 说明文件格式不符合要求
