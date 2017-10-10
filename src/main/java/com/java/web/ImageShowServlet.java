@@ -4,16 +4,11 @@ import com.java.manager.ImageManager;
 import com.java.model.Image;
 import com.java.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
@@ -45,11 +40,13 @@ public class ImageShowServlet extends HttpServlet{
        List<Image> list = imageManager.getImageList(image);
        Iterator<Image> iterator = list.iterator();
        String filePath = "";
+       String fileName ="";
        while (iterator.hasNext()){
            Image image1 = iterator.next();
-           filePath = image1.getImagepath();
+           filePath = image1.getImagePath();
+           fileName = image1.getImageName();
        }
-       session.setAttribute("show_image_path",filePath);
+       session.setAttribute("show_image_name",filePath+fileName);
         response.sendRedirect(request.getContextPath() + "/excel/imageupload.jsp");
     }
 }

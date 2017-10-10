@@ -72,13 +72,12 @@ public class UploadImageServlet extends HttpServlet {
                         fileItem.write(newFile); //输出到新文件
                         fileItem.delete();
                         ImageManager imageManager = new ImageManager();
-                        imageManager.saveImage(filePath+newFileName,fileName);
-                        session.setAttribute("image_name", fileName);
-                        session.setAttribute("image_path", "/images/"+newFileName);
+                        imageManager.saveImage(filePath,newFileName); //路径入库
+
+                        session.setAttribute("image_name", "/images/"+newFileName);
                         response.sendRedirect(request.getContextPath() + "/excel/imageupload.jsp"); //重定向回imageupload.jsp
                     }
                 }
-
 
             }catch(Exception e){
                e.printStackTrace();

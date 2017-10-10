@@ -30,8 +30,8 @@ public class ImageManager {
             while (resultSet.next()){
                 Image tImage = new Image();
                 tImage.setUserid(resultSet.getString("user_id"));
-                tImage.setImagename(resultSet.getString("image_path"));
-                tImage.setOldname(resultSet.getString("old_name"));
+                tImage.setImagePath(resultSet.getString("image_path"));
+                tImage.setImageName(resultSet.getString("image_name"));
                 list.add(tImage);
             }
         } catch (Exception e) {
@@ -40,17 +40,17 @@ public class ImageManager {
 
         Iterator<Image> ite = list.iterator();
         while (ite.hasNext()){
-            System.out.println(ite.next().getImagename());
+            System.out.println(ite.next().getImageName());
         }
         return list;
     }
 
-    public void saveImage(String newFilename,String oldname){
+    public void saveImage(String imagePath,String imageName){
 
         try {
             Image image = new Image();
-            image.setOldname(oldname);
-            image.setImagename(newFilename);
+            image.setImagePath(imagePath);
+            image.setImageName(imageName);
             image.setUserid("01");
             imageDao.imageAdd(dbUtil.getCon(),image);//按行处理
 

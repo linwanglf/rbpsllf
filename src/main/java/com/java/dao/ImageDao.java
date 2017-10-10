@@ -28,13 +28,13 @@ public class ImageDao {
 	}
 
 	public int imageAdd(Connection con,Image image )throws Exception{
-		String sql="insert into image(image_path,user_id,old_name) values(?,?,?)";
+		String sql="insert into image(image_path,user_id,image_name) values(?,?,?)";
 		System.out.println("strSQL: " + sql);
 
 		PreparedStatement pstmt=con.prepareStatement(sql);
-		pstmt.setString(1, image.getImagepath());
+		pstmt.setString(1, image.getImagePath());
 		pstmt.setString(2, image.getUserid());
-		pstmt.setString(3, image.getOldname());
+		pstmt.setString(3, image.getImageName());
 		return pstmt.executeUpdate();
 	}
 	

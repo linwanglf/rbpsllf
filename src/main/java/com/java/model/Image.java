@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 public class Image {
     private  int id;
-    private  String imagename;
+    private  String imagePath;
     private  String userid;
-    private String oldname;
+    private String imageName;
 }

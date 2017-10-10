@@ -61,12 +61,12 @@
 
 <form action="/excel/uploadimage" method="post" enctype="multipart/form-data">
 本地目录：<input type="file" name="uploadFile">
-<img src="${image_path}">
+<img src="${image_name}">
 <input type="submit" value="上传头像"/>
 </form>
 
 <form action="/excel/showimage" method="post" >
-    <img src="${show_image_path}">
+    <img src="${show_image_name}">
     <input type="submit" value="显示头像"/>
 </form>
 
