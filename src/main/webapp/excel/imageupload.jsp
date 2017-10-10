@@ -59,11 +59,15 @@
 <body>
 <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
 
-<form id="file_form" action="/excel/uploadexcel" enctype="multipart/form-data"        method="post">
-    <%--上传文件或者图片的时候Form表单需要设置enctype="multipart/form-data" 设置表单的MIME编码,表示以二进制的形式上传--%>
+<form action="/excel/uploadimage" method="post" enctype="multipart/form-data">
+本地目录：<input type="file" name="uploadFile">
+<img src="${image_path}">
+<input type="submit" value="上传头像"/>
+</form>
 
-    <input type="file" name="file" id="file_input" />
-    <input type="submit" value="文件上传" id='upFile-btn'>
+<form action="/excel/showimage" method="post" >
+    <img src="${show_image_path}">
+    <input type="submit" value="显示头像"/>
 </form>
 
 

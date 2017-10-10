@@ -177,6 +177,28 @@
 
 
 
+  <servlet>
+    <servlet-name>uploadImageServlet</servlet-name>
+    <servlet-class>com.java.web.UploadImageServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>uploadImageServlet</servlet-name>
+    <url-pattern>/excel/uploadimage</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>showImageServlet</servlet-name>
+    <servlet-class>com.java.web.ImageShowServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>showImageServlet</servlet-name>
+    <url-pattern>/excel/showimage</url-pattern>
+  </servlet-mapping>
+
+
 
 
 
