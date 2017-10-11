@@ -9,6 +9,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <quartz.version>2.2.1</quartz.version>
     <spring.version>4.0.2.RELEASE</spring.version>
     <slf4j.version>1.7.5</slf4j.version>
