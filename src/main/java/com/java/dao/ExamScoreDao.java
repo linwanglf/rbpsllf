@@ -35,7 +35,7 @@ public class ExamScoreDao {
         if(pageBean!=null){
             sb.append(" limit "+pageBean.getStart()+","+pageBean.getRows());
         }
-        log.info("SQL: {}", sb.toString().replaceFirst("and", "where"));
+       /// log.info("SQL: {}", sb.toString().replaceFirst("and", "where"));
         return pstmt.executeQuery();
     }
 
@@ -48,8 +48,6 @@ public class ExamScoreDao {
         pstmt.setString(2, rowList.get(1).toString());
         pstmt.setString(3, rowList.get(2).toString());
         pstmt.setString(4,rowList.get(3).toString());
-
-
 
         return pstmt.executeUpdate();
     }

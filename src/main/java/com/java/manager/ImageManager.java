@@ -1,8 +1,6 @@
 package com.java.manager;
 
-import com.java.dao.ExamScoreDao;
 import com.java.dao.ImageDao;
-import com.java.model.ExamScore;
 import com.java.model.Image;
 import com.java.util.DbUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
+
 /**
  * Created by xxjs-gd-llf
  * DATETIME:2017/10/3 22:11
@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 public class ImageManager {
 
-    private  DbUtil dbUtil=new DbUtil();
+    private DbUtil dbUtil=new DbUtil();
     private ImageDao imageDao=new ImageDao();
 
     public List<Image> getImageList( Image image){

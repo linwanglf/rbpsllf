@@ -154,52 +154,119 @@
     <url-pattern>/chart/mixchart</url-pattern>
   </servlet-mapping>
 
-  <servlet>
-    <servlet-name>excelServlet</servlet-name>
-    <servlet-class>com.java.web.ExcelServlet</servlet-class>
-  </servlet>
+    <servlet>
+        <servlet-name>excelServlet</servlet-name>
+        <servlet-class>com.java.web.ExcelServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>excelServlet</servlet-name>
+        <url-pattern>/excel</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>attentanceServlet</servlet-name>
+        <servlet-class>com.java.web.AttentanceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>attentanceServlet</servlet-name>
+        <url-pattern>/attentance</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>uploadServlet</servlet-name>
+        <servlet-class>com.java.web.UploadExcelServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>uploadServlet</servlet-name>
+        <url-pattern>/excel/uploadexcel</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>uploadImageServlet</servlet-name>
+        <servlet-class>com.java.web.UploadImageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>uploadImageServlet</servlet-name>
+        <url-pattern>/excel/uploadimage</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>showImageServlet</servlet-name>
+        <servlet-class>com.java.web.ImageShowServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>showImageServlet</servlet-name>
+        <url-pattern>/excel/showimage</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>selectServlet</servlet-name>
+        <servlet-class>com.java.web.SelectServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>selectServlet</servlet-name>
+        <url-pattern>/select</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>PresentServlet</servlet-name>
+        <servlet-class>com.java.web.PresentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PresentServlet</servlet-name>
+        <url-pattern>/present</url-pattern>
+    </servlet-mapping>
+
+
+
+  <servlet>
+    <servlet-name>MonitorServlet</servlet-name>
+    <servlet-class>com.java.web.MonitorServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
-    <servlet-name>excelServlet</servlet-name>
-    <url-pattern>/excel/exportexcel</url-pattern>
+    <servlet-name>MonitorServlet</servlet-name>
+    <url-pattern>/monitor</url-pattern>
   </servlet-mapping>
 
 
   <servlet>
-    <servlet-name>uploadServlet</servlet-name>
-    <servlet-class>com.java.web.UploadExcelServlet</servlet-class>
+    <servlet-name>CpuServlet</servlet-name>
+    <servlet-class>com.java.web.CpuServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
-    <servlet-name>uploadServlet</servlet-name>
-    <url-pattern>/excel/uploadexcel</url-pattern>
-  </servlet-mapping>
-
-
-
-  <servlet>
-    <servlet-name>uploadImageServlet</servlet-name>
-    <servlet-class>com.java.web.UploadImageServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>uploadImageServlet</servlet-name>
-    <url-pattern>/excel/uploadimage</url-pattern>
+    <servlet-name>CpuServlet</servlet-name>
+    <url-pattern>/linecpu</url-pattern>
   </servlet-mapping>
 
 
   <servlet>
-    <servlet-name>showImageServlet</servlet-name>
-    <servlet-class>com.java.web.ImageShowServlet</servlet-class>
+    <servlet-name>TemperatureServlet</servlet-name>
+    <servlet-class>com.java.web.TemperatureServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
-    <servlet-name>showImageServlet</servlet-name>
-    <url-pattern>/excel/showimage</url-pattern>
+    <servlet-name>TemperatureServlet</servlet-name>
+    <url-pattern>/temperature</url-pattern>
   </servlet-mapping>
 
 
-
+  <servlet>
+    <servlet-name>CpuUsedRateServlet</servlet-name>
+    <servlet-class>com.java.web.CpuUsedRateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CpuUsedRateServlet</servlet-name>
+    <url-pattern>/cpuusedrate</url-pattern>
+  </servlet-mapping>
 
 
 </web-app>

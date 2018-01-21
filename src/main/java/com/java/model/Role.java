@@ -7,7 +7,11 @@ public class Role {
 	private String authIds;
 	private String authStrs;
 	private String roleDescription;
-	
+
+    private int menberId;//新增加
+    private String menberName;//新增加
+    private String menu_level;//新增加
+
 	public Role() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -23,6 +27,15 @@ public class Role {
 		this.roleId = roleId;
 		this.authIds = authIds;
 	}
+
+    public Role(int menberId,String menberName, String menu_level) {
+        super();
+        this.menberId = menberId;
+        this.menberName = menberName;
+        this.menu_level = menu_level;
+    }
+
+
 	public int getRoleId() {
 		return roleId;
 	}
@@ -53,6 +66,25 @@ public class Role {
 	public void setRoleDescription(String roleDescription) {
 		this.roleDescription = roleDescription;
 	}
-	
-	
+
+
+    public int getMenberId() {return menberId;}
+    public void setMenberId(String roleDescription) {
+        this.menberId = menberId;
+    }
+
+    public String getMenberName() {
+        return menberName;
+    }
+    public void setMenberName(String menberName) {
+        this.menberName= menberName;
+    }
+
+    public String getMenu_level() {
+        return menu_level;
+    }
+    public void setMenu_level(String menu_level) {
+        this.menu_level= menu_level;
+    }
+
 }

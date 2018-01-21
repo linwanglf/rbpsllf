@@ -1,60 +1,109 @@
 package com.java.web;
 
-
-import com.java.dao.RegionDao;
-import com.java.model.Region;
-import com.java.util.DbUtil;
-import com.java.util.JsonUtil;
-import com.java.util.ResponseUtil;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
 
-/**
- * Created by xxjs-gd-llf
- * DATETIME:2017/9/27 17:30
- * Description:
- */
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import com.java.dao.LoginDao;
+import com.java.dao.RegionDao;
+import com.java.model.Login;
+import com.java.model.PageBean;
+import com.java.model.Region;
+import com.java.util.DbUtil;
+import com.java.util.JsonUtil;
+import com.java.util.ResponseUtil;
+import com.java.util.StringUtil;
+
 public class RegionServlet extends HttpServlet {
 
 	DbUtil dbUtil=new DbUtil();
 	RegionDao regionDao=new RegionDao();
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	
+	/**
+	 * Constructor of the object.
+	 */
+	public RegionServlet() {
+		super();
+	}
+
+	/**
+	 * Destruction of the servlet. <br>
+	 */
+	public void destroy() {
+		super.destroy(); // Just puts "destroy" string in log
+		// Put your code here
+	}
+
+	/**
+	 * The doGet method of the servlet. <br>
+	 *
+	 * This method is called when a form has its tag value method equals to get.
+	 * 
+	 * @param request the request send by the client to the server
+	 * @param response the response send by the server to the client
+	 * @throws ServletException if an error occurred
+	 * @throws IOException if an error occurred
+	 */
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		this.doPost(request, response);
 	}
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	/**
+	 * The doPost method of the servlet. <br>
+	 *
+	 * This method is called when a form has its tag value method equals to post.
+	 * 
+	 * @param request the request send by the client to the server
+	 * @param response the response send by the server to the client
+	 * @throws ServletException if an error occurred
+	 * @throws IOException if an error occurred
+	 */
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Enter RegionServlet ");
+
 		request.setCharacterEncoding("utf-8");
-		comBoList(request, response);
-
+		String action=request.getParameter("action");
+		if("list".equals(action)){
+			list(request, response);
+		}else if("save".equals(action)){
+			//save(request, response);
+		}else if("delete".equals(action)){
+			//delete(request, response);
+		}else if("save".equals(action)){
+			//save(request, response);
+		}
 	}
-
-
-	private void comBoList(HttpServletRequest request, HttpServletResponse response)
+	
+	
+	/*
+	 * 
+	 * 
+	 */
+	private void list(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String page=request.getParameter("page");
+		String rows=request.getParameter("rows");
+		Region region=new Region();
+		PageBean pageBean=new PageBean(Integer.parseInt(page), Integer.parseInt(rows));
 		Connection con=null;
 		try{
 			con=dbUtil.getCon();
-			JSONArray jsonArray=new JSONArray();
-			JSONObject jsonObject=new JSONObject();
-			jsonObject.put("regioncode", "");
-			jsonObject.put("regionname", "select...");
-			jsonArray.add(jsonObject);
-			jsonArray.addAll(JsonUtil.formatRsToJsonArray(regionDao.regionList(con,null,new Region())));
-			System.out.println("jsonArray: " + jsonArray.toString());
-			ResponseUtil.write(response, jsonArray);
+			JSONObject result=new JSONObject();
+			JSONArray jsonArray=JsonUtil.formatRsToJsonArray(regionDao.regionList(con, pageBean,region));
+			int total=regionDao.regionCount(con,region);
+			result.put("rows", jsonArray);
+			result.put("total", total);
+			ResponseUtil.write(response, result);
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -65,6 +114,15 @@ public class RegionServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	/**
+	 * Initialization of the servlet. <br>
+	 *
+	 * @throws ServletException if an error occurs
+	 */
+	public void init() throws ServletException {
+		// Put your code here
 	}
 
 }

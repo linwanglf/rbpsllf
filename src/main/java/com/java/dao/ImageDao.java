@@ -1,6 +1,5 @@
 package com.java.dao;
 
-import com.java.model.Area;
 import com.java.model.Image;
 import com.java.model.PageBean;
 import com.java.util.StringUtil;
@@ -9,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
 
 @Slf4j
 public class ImageDao {

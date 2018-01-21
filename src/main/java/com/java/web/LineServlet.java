@@ -40,7 +40,8 @@ public class LineServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        log.info( DateUtil.getCurrent()  + " Start LineServlet  ");
+//        log.info( DateUtil.getCurrent()  + " Start LineServlet  ");
+        System.out.println(DateUtil.getCurrent()  + " Start LineServlet  ");
         request.setCharacterEncoding("utf-8");
         Simpledata a = new Simpledata("GuangZhou" , new Integer[]{1 , 0 , 4,8,20,30,22,33,20,18,29 });
         Simpledata b = new Simpledata("ShenZhen" , new Integer[]{10 , 5 , 5,8,10,20,12,23,30,28,29 });
@@ -56,6 +57,7 @@ public class LineServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        log.info( DateUtil.getCurrent()  + " Finish LineServlet ");
+//        log.info( DateUtil.getCurrent()  + " Finish LineServlet ");
+        System.out.println(DateUtil.getCurrent()  + " Finish LineServlet ");
     }
 }

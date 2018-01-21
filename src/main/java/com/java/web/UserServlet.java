@@ -100,6 +100,8 @@ public class UserServlet extends HttpServlet{
 		request.setAttribute("userName", userName);
 		request.setAttribute("password", password);
 		request.setAttribute("imageCode", imageCode);
+
+
 		if(StringUtil.isEmpty(userName)||StringUtil.isEmpty(password)){
 			request.setAttribute("error", "username can not be null");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -126,7 +128,8 @@ public class UserServlet extends HttpServlet{
 			}else{
 				String roleName=roleDao.getRoleNameById(con, currentUser.getRoleId());
 				currentUser.setRoleName(roleName);
-				session.setAttribute("currentUser", currentUser);
+				session.setAttribute("currentUser", currentUser);//将用户名，其实就是工号
+
 				response.sendRedirect("main.jsp");
 			}
 		} catch (Exception e) {
@@ -151,8 +154,8 @@ public class UserServlet extends HttpServlet{
 	
 	private void list(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String page=request.getParameter("page");
-		String rows=request.getParameter("rows");
+		String page=request.getParameter("page");//在前台看不到这个变量，只要用了分页就自动传递
+		String rows=request.getParameter("rows");//在前台看不到这个变量，只要用了分页就自动传递
 		User user=new User();
 		String s_userName=request.getParameter("s_userName");
 		String s_roleId=request.getParameter("s_roleId");
@@ -233,7 +236,7 @@ public class UserServlet extends HttpServlet{
 	
 	private void delete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String delIds=request.getParameter("delIds");
+		String delIds=request.getParameter("delIds");//,
 		Connection con=null;
 		try{
 			con=dbUtil.getCon();
@@ -257,5 +260,7 @@ public class UserServlet extends HttpServlet{
 			}
 		}
 	}
-	
+
+
+
 }

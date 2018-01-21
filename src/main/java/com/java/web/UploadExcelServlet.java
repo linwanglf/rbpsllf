@@ -2,13 +2,13 @@ package com.java.web;
 
 
 import com.java.manager.ScoreManager;
-import com.java.util.DateUtil;
 import com.java.util.ExcelUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +35,7 @@ public class UploadExcelServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        log.info(DateUtil.getCurrent() + " Start UploadExcelServlet  ");
+        //log.info(DateUtil.getCurrent() + " Start UploadExcelServlet  ");
         request.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
         FileItemFactory factory = new DiskFileItemFactory();
@@ -45,10 +45,10 @@ public class UploadExcelServlet extends HttpServlet {
         try {
             List<FileItem> list = upload.parseRequest(request); //将请求转换成FileItem List
             for (int i = 0; i < list.size(); i++) {
-                FileItem item = list.get(i);
+                FileItem item = list.get(i);//
                 if (item.getName().endsWith(".xls")||item.getName().endsWith(".xlsx")) {
                     // 说明是文件,不过这里最好限制一下
-                    List<List<String>> result = ExcelUtil.importXlsx(item.getInputStream());//item转换成输入流
+                    List<List<String>> result = ExcelUtil.importXlsx(item.getInputStream());//读取记录,item转换成输入流
                     scoreManager.importExcelDbList(result); //导入数据库
                     out.write("{\"result\":\"OK\"}"); //返回的JSON格式
                 } else {

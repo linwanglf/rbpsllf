@@ -22,7 +22,7 @@ public class AreaDao {
 			sb.append(" limit "+pageBean.getStart()+","+pageBean.getRows());
 		}
 		PreparedStatement pstmt=con.prepareStatement(sb.toString().replaceFirst("and", "where"));
-		log.info("SQL: {}", sb.toString().replaceFirst("and", "where"));
+		//log.info("SQL: {}", sb.toString().replaceFirst("and", "where"));
 		return pstmt.executeQuery();
 	}
 	

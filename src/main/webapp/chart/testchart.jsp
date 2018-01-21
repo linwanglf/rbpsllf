@@ -108,6 +108,7 @@
 
         $('#container').highcharts(json);
     });
+
 </script>
 </body>
 

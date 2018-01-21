@@ -5,12 +5,18 @@ import java.sql.DriverManager;
 
 public class DbUtil {
 
-	private String dbUrl="jdbc:mysql://127.0.0.1:3306/rbpsdb";
+	private String dbUrl="jdbc:mysql://127.0.0.1:3306/sgopdb";
 	private String dbUserName="root";
 	private String dbPassword="root";
 	private String jdbcName="com.mysql.jdbc.Driver";
 	
 	public Connection getCon()throws Exception{
+		Class.forName(jdbcName);
+		Connection con=DriverManager.getConnection(dbUrl, dbUserName, dbPassword);
+		return con;
+	}
+
+	public Connection getConn()throws Exception{
 		Class.forName(jdbcName);
 		Connection con=DriverManager.getConnection(dbUrl, dbUserName, dbPassword);
 		return con;

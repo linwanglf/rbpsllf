@@ -127,6 +127,20 @@
 			}
 		});
 	}
+
+    $(function () {
+        var _master = $('#menu_level').combobox({
+            editable: false,
+            onSelect: function (record) {
+                var departname;
+                //departname=$('#menu_level').combobox('getText');
+                departname=$('#menu_level').combobox('getValue');
+                alert("当前值: " + departname);
+            }
+        });
+    });
+
+
 </script>
 </head>
 <body style="margin: 1px;">
@@ -155,7 +169,12 @@
 	<div>
 		&nbsp;字典类型：&nbsp;<input type="text" name="s_dictType" id="s_dictType" size="20" onkeydown="if(event.keyCode==13) searchUser()"/>
 
-		&nbsp;支付状态(测试下拉标签)：&nbsp;<select class="easyui-combobox" name="paystat" style="width:100px;"> <html:options dicttype="PAYSTAT">  </html:options></select>
+		&nbsp;学生类型(测试下拉标签)：&nbsp;
+        <select class="easyui-combobox" id="menu_level" name="menu_level" style="width:100px;" >
+        <html:options dicttype="Menu_level">  </html:options>
+        </select>
+
+
 		<a href="javascript:searchUser()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
 	</div>
 </div>
@@ -218,4 +237,3 @@
 </div>
 </body>
 </html>
-

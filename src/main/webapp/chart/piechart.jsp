@@ -41,7 +41,7 @@
                         text: '饼图Demo'
                     },
                     credits: {
-                        text: 'www.yechoor.cn'
+                        //text: 'www.yechoor.cn'
                     },
                     tooltip: {
                         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

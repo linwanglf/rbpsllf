@@ -32,7 +32,7 @@ public class ColumnServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        log.info( DateUtil.getCurrent()  + " Start ColumnServlet ");
+        //log.info( DateUtil.getCurrent()  + " Start ColumnServlet ");
         request.setCharacterEncoding("utf-8");
         Simpledata data_jane = new Simpledata("Jane" , new Integer[]{1 , 0 , 4});
         Simpledata data_john = new Simpledata("Jone" , new Integer[]{5 , 7 , 3});
@@ -66,7 +66,7 @@ public class ColumnServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        log.info( DateUtil.getCurrent()  + " Finish ColumnServlet ");
+        //log.info( DateUtil.getCurrent()  + " Finish ColumnServlet ");
     }
 
 

@@ -47,7 +47,7 @@ public class ScoreManager {
     public void importExcelDbList(List<List<String>> list ){
 
         try {
-            for (int i=0; i<list.size();i++ ){
+            for (int i=0; i<list.size();i++ ){//如果需要处理表头，这里的i=1、2.。。。开始，具体看表头的所占用的行数
                 examScoreDao.scoreAdd(dbUtil.getCon(),(List)list.get(i));//按行处理
             }
         } catch (Exception e) {

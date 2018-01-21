@@ -20,7 +20,7 @@
 			<li class="topA"></li>
 			<li class="topB">
 				<span> 
-					<a href="http://www.sige.com" target="_blank"><img src="images/login/logo.png" alt="" style="" /></a>
+					<a href="http://www.gacmotor.com" target="_blank"><img src="images/login/logo.png" alt="" style="" /></a>
 				</span>
 			</li>
 			<li class="topC"></li>
@@ -28,9 +28,9 @@
 			<ul class="login">
 				<br>
 				<br>
-				<li><span class="left">&nbsp;&nbsp;Username：&nbsp;&nbsp;</span>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<span style=""> <input id="userName" name="userName" type="text" class="txt" value="${userName }" /> </span></li>
-				<li><span class="left">&nbsp;&nbsp;Password：&nbsp;&nbsp;</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=""> <input id="password" name="password" type="password" class="txt" value="${password }" onkeydown= "if(event.keyCode==13)form1.submit()"/> </span></li>
-				<li><span class="left">&nbsp;&nbsp;Verification：&nbsp;&nbsp;</span>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<span style=""> <input type="text" value="${imageCode }" name="imageCode"  class="txtCode" id="imageCode" size="10" onkeydown= "if(event.keyCode==13)form1.submit()"/>&nbsp;<img onclick="javascript:loadimage();"  title="换一张试试" name="randImage" id="randImage" src="images/image.jsp" width="60" height="20" border="1" align="absmiddle"> </span></li>
+				<li><span class="left">&nbsp;&nbsp;工号&nbsp;&nbsp;</span>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<span style=""> <input id="userName" name="userName" type="text" class="txt" value="${userName }" /> </span></li>
+				<li><span class="left">&nbsp;&nbsp;手机号</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=""> <input id="password" name="password" type="password" class="txt" value="${password }" onkeydown= "if(event.keyCode==13)form1.submit()"/> </span></li>
+				 <li><span class="left">&nbsp;&nbsp;校验码</span>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<span style=""> <input type="text" value="${imageCode }" name="imageCode"  class="txtCode" id="imageCode" size="10" onkeydown= "if(event.keyCode==13)form1.submit()"/>&nbsp;<img onclick="javascript:loadimage();"  title="换一张试试" name="randImage" id="randImage" src="images/image.jsp" width="60" height="20" border="1" align="absmiddle"> </span></li>
 			</ul>
 			</li>
 			<li class="topE"></li>
@@ -39,7 +39,7 @@
 			<li class="middle_C"><span class="btn"> <img alt="" src="images/login/btnlogin.gif" onclick="javascript:document.getElementById('form1').submit()"/> </span>&nbsp;&nbsp;<span ><font color="red">${error }</font></span></li>
 			<li class="middle_D"></li>
 			<li class="bottom_A"></li>
-			<li class="bottom_B"> Sige Intelligence www.sige.com</li>
+			<li class="bottom_B"> 广汽传祺动力总成设备科 林尚芳</li>
 		</ul>
 	</div>
 </form>

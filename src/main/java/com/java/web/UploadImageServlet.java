@@ -1,16 +1,12 @@
 package com.java.web;
 
 import com.java.manager.ImageManager;
-import com.java.manager.ScoreManager;
 import com.java.util.DateUtil;
-import com.java.util.ExcelUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
@@ -40,7 +35,7 @@ public class UploadImageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        log.info(DateUtil.getCurrent() + " Start UploadImageServlet ");
+       // log.info(DateUtil.getCurrent() + " Start UploadImageServlet ");
         HttpSession session = request.getSession();
         request.setCharacterEncoding("utf-8");
         if(ServletFileUpload.isMultipartContent(request)){

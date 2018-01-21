@@ -42,6 +42,7 @@ public class RoleServlet extends HttpServlet{
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String action=request.getParameter("action");
+
 		if("comBoList".equals(action)){
 			comBoList(request, response);			
 		}else if("list".equals(action)){
@@ -52,7 +53,20 @@ public class RoleServlet extends HttpServlet{
 			roleSave(request, response);		
 		}else if("auth".equals(action)){
 			auth(request, response);		
-		}
+		}else if("rolemenberauth".equals(action)){//考勤级别授权
+            rolemenberauth(request, response);
+        }else if("comBoListdivision".equals(action)){//考勤级别授权
+            comBoListdivision(request, response);
+        }else if("comBoListdepart".equals(action)){//考勤级别授权
+            comBoListdepart(request, response);
+        }else if("comBoListdepartment".equals(action)){//考勤级别授权
+            comBoListdepartment(request, response);
+        }else if("comBoListclass".equals(action)){//考勤级别授权
+            comBoListclass(request, response);
+        }
+
+
+
 	}
 
 	private void comBoList(HttpServletRequest request, HttpServletResponse response)
@@ -214,4 +228,137 @@ public class RoleServlet extends HttpServlet{
 			}
 		}
 	}
+
+    private void rolemenberauth(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String roleId=request.getParameter("rolemenberId");
+        String authIds=request.getParameter("menberIds");
+        Role role=new Role(Integer.parseInt(roleId), authIds);
+        Connection con=null;
+        try{
+            JSONObject result=new JSONObject();
+            con=dbUtil.getCon();
+            int updateNums=roleDao.roleMenberIdsUpdate(con, role);
+            if(updateNums>0){
+                result.put("success", true);
+            }else{
+                result.put("errorMsg", "错误");
+            }
+            ResponseUtil.write(response, result);
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            try {
+                dbUtil.closeCon(con);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void comBoListdivision(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Connection con=null;
+        try{
+            con=dbUtil.getCon();
+            String parentId=request.getParameter("parentId");
+            JSONArray jsonArray=new JSONArray();
+            JSONObject jsonObject=new JSONObject();
+            jsonObject.put("menberId", "0");
+            jsonObject.put("menberName", "");
+//            jsonObject.put("roleId", "");
+//            jsonObject.put("roleName", "select...");
+            jsonArray.add(jsonObject);
+            jsonArray.addAll(JsonUtil.formatRsToJsonArray(roleDao.divisionList(con,null,new Role(),parentId)));
+            ResponseUtil.write(response, jsonArray);
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            try {
+                dbUtil.closeCon(con);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void comBoListdepart(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+
+
+        Connection con=null;
+        try{
+            con=dbUtil.getCon();
+            String parentId_select=request.getParameter("parentId_select");
+            JSONArray jsonArray=new JSONArray();
+            JSONObject jsonObject=new JSONObject();
+            jsonObject.put("menberId", "0");
+            jsonObject.put("menberName", "");
+            jsonArray.add(jsonObject);
+            jsonArray.addAll(JsonUtil.formatRsToJsonArray(roleDao.departList(con,null,new Role(),parentId_select)));
+            ResponseUtil.write(response, jsonArray);
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            try {
+                dbUtil.closeCon(con);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void comBoListdepartment(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Connection con=null;
+        try{
+            con=dbUtil.getCon();
+            String parentId_select=request.getParameter("parentId_select");
+            JSONArray jsonArray=new JSONArray();
+            JSONObject jsonObject=new JSONObject();
+            jsonObject.put("menberId", "0");
+            jsonObject.put("menberName", "");
+            jsonArray.add(jsonObject);
+            jsonArray.addAll(JsonUtil.formatRsToJsonArray(roleDao.departmentList(con,null,new Role(),parentId_select)));
+            ResponseUtil.write(response, jsonArray);
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            try {
+                dbUtil.closeCon(con);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+    private void comBoListclass(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Connection con=null;
+        try{
+            con=dbUtil.getCon();
+            String parentId_select=request.getParameter("parentId_select");
+
+            JSONArray jsonArray=new JSONArray();
+            JSONObject jsonObject=new JSONObject();
+            jsonObject.put("menberId", "0");
+            jsonObject.put("menberName", "");
+            jsonArray.add(jsonObject);
+            jsonArray.addAll(JsonUtil.formatRsToJsonArray(roleDao.classList(con,null,new Role(),parentId_select)));
+            ResponseUtil.write(response, jsonArray);
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            try {
+                dbUtil.closeCon(con);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
 }

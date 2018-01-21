@@ -73,11 +73,11 @@ public class DictServlet extends HttpServlet {
 			con = dbUtil.getCon();
 			JSONObject result = new JSONObject();
 			JSONArray jsonArray = JsonUtil.formatRsToJsonArray(dictDao.dictList(con, pageBean, dict));
-			log.info("jsonArray {} " ,jsonArray);
+			//log.info("jsonArray {} " ,jsonArray);
 			int total = dictDao.dictCount(con, dict);
 			result.put("rows", jsonArray);
 			result.put("total", total);
-			log.info("result {} " ,result);
+			//log.info("result {} " ,result);
 			ResponseUtil.write(response, result);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -148,7 +148,7 @@ public class DictServlet extends HttpServlet {
 
 	private void delete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		log.info("Start delete Dict ");
+		//log.info("Start delete Dict ");
 		String dictIds=request.getParameter("dictId");
 		Connection con=null;
 		try{

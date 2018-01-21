@@ -35,7 +35,7 @@ public class CityDao {
 		}
 		PreparedStatement pstmt=con.prepareStatement(sb.toString().replaceFirst("and", "where"));
 
-		log.info("SQL: {}", sb.toString().replaceFirst("and", "where"));
+		//log.info("SQL: {}", sb.toString().replaceFirst("and", "where"));
 		return pstmt.executeQuery();
 	}
 //

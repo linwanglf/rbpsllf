@@ -40,7 +40,8 @@ public class MixServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        log.info( DateUtil.getCurrent()  + " Start MixServlet  ");
+        System.out.println( DateUtil.getCurrent()  + " Start MixServlet  ");
+//        log.info( DateUtil.getCurrent()  + " Start MixServlet  ");
         request.setCharacterEncoding("utf-8");
         List list = new ArrayList();
 
@@ -88,6 +89,7 @@ public class MixServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        log.info( DateUtil.getCurrent()  + " Finish MixServlet ");
+//        log.info( DateUtil.getCurrent()  + " Finish MixServlet ");
+        System.out.println(DateUtil.getCurrent()  + " Finish MixServlet ");
     }
 }

@@ -4,6 +4,7 @@ import com.java.manager.ImageManager;
 import com.java.model.Image;
 import com.java.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,7 @@ public class ImageShowServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        log.info(DateUtil.getCurrent() + " Start ImageShowServlet ");
+       // log.info(DateUtil.getCurrent() + " Start ImageShowServlet ");
         HttpSession session = request.getSession();
         request.setCharacterEncoding("utf-8");
         ImageManager imageManager = new ImageManager();

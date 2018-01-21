@@ -19,7 +19,7 @@ public class DictDao {
 		if(pageBean!=null){
 			sb.append(" limit "+pageBean.getStart()+","+pageBean.getRows());
 		}
-		log.info(" dictList {}",sb );
+		//log.info(" dictList {}",sb );
 		PreparedStatement pstmt=con.prepareStatement(sb.toString());
 		return pstmt.executeQuery();
 	}
@@ -29,7 +29,7 @@ public class DictDao {
 		Map<String,String > map =  new HashMap<String,String>();
 
 		String sql="select DICT_NAME,DICT_DESC from T_SYM_DICT where DICT_TYPE=?";
-		log.info(" getDictByDictTypeId {}",sql );
+		//log.info(" getDictByDictTypeId {}",sql );
 		try {
 			DbUtil dbUtil = new DbUtil();
 			Connection con = dbUtil.getCon();
@@ -50,7 +50,7 @@ public class DictDao {
 	
 	public int dictCount(Connection con,Dict dict)throws Exception{
 		StringBuffer sb=new StringBuffer("select count(*) as total from t_sym_dict u ");
-		log.info(" Sql {}",sb );
+		//log.info(" Sql {}",sb );
 		PreparedStatement pstmt=con.prepareStatement(sb.toString());
 		ResultSet rs=pstmt.executeQuery();
 		if(rs.next()){
@@ -84,7 +84,7 @@ public class DictDao {
 	
 	public int dictDelete(Connection con,String dictIds)throws Exception{
 		String sql="delete from t_sym_dict where dict_id in ("+dictIds+")";
-		log.info(" Sql {}",sql );
+		//log.info(" Sql {}",sql );
 		PreparedStatement pstmt=con.prepareStatement(sql);
 		return pstmt.executeUpdate();
 	}
