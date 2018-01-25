@@ -1,8 +1,9 @@
 package com.java.web;
 
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSONArray;
 import com.java.manager.TemperatureManager;
-import com.java.model.Temperature;
+import com.java.model.GacProcess;
+import com.java.model.MemoryRate;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +21,7 @@ import java.util.List;
 
 
 
-public class CpuUsedRateServlet extends HttpServlet {
+public class GacProcessServlet extends HttpServlet {
     private TemperatureManager temperatureManager = new TemperatureManager();
 
     @Override
@@ -35,17 +35,15 @@ public class CpuUsedRateServlet extends HttpServlet {
             throws ServletException, IOException {
 
         request.setCharacterEncoding("utf-8");
-        String strIp = request.getParameter("ip");
+        String strIp = request.getParameter("ipAddress");
         System.out.println("strIP "  + strIp );
 
-        Temperature temperatureGZ = temperatureManager.getLastCpuUsedRateByIp( strIp);
-        List<Temperature > list = new ArrayList<>();
-        list.add(temperatureGZ);
 
-        Gson gson = new Gson();
-        String data = gson.toJson(list);
+        List<GacProcess> list = temperatureManager.getLastGacProcessByIp( strIp);
+        JSONArray jsonArray = new JSONArray();
         PrintWriter printWriter = response.getWriter();
-        printWriter.print(data);
+        System.out.println(jsonArray.toJSONString(list));
+        printWriter.print(jsonArray.toJSONString(list));
         printWriter.flush();
         printWriter.close();
     }

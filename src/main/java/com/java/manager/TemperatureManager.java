@@ -1,11 +1,16 @@
 package com.java.manager;
 
 import com.java.dao.TemperatureDao;
+import com.java.model.CpuRate;
+import com.java.model.GacProcess;
+import com.java.model.MemoryRate;
 import com.java.model.Temperature;
 import com.java.util.DatabaseUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -19,51 +24,72 @@ public class TemperatureManager {
 
     private TemperatureDao temperatureDao=new TemperatureDao();
 
-    public Temperature getLastTemperatureByIp(String strIp){
-        Temperature temperature = new Temperature();
-        int[] temp= new int[10];
-        Random rand = new Random();
-        int randNum = 0;
+    public List<Temperature> getLastTemperatureByIp(String strIp){
+        List<Temperature> list = new ArrayList<>();
+
         try{
-            int i = 0;
             ResultSet resultSet = temperatureDao.lastCpuTemperature(conn,strIp);
             while (resultSet.next()){
-                randNum= rand.nextInt(20);
-                //temp[i] = Integer.valueOf(resultSet.getString("cpu_temperature").substring(1,3)).intValue() + randNum ;
-                temp[i] = Integer.valueOf(resultSet.getString("cpu_temperature")).intValue();
-                i ++;
-
+                Temperature temperature = new Temperature();
+                temperature.setXKey( resultSet.getString("collect_time") );
+                temperature.setYValue( resultSet.getString("cpu_temperature")  );
+                list.add(temperature);
             }
-
         }catch (Exception e ){
             e.printStackTrace();
         }
-        temperature.setData(temp);
-        temperature.setName(strIp);
-        return  temperature;
+        return  list;
     }
 
 
-    public Temperature getLastCpuUsedRateByIp(String strIp){
-        Temperature temperature = new Temperature();
-        int[] temp= new int[10];
+    public List<CpuRate> getLastCpuUsedRateByIp(String strIp){
+        List<CpuRate> list = new ArrayList<>();
         try{
-            int i = 0;
             ResultSet resultSet = temperatureDao.lastCpuUsedRate(conn,strIp);
             while (resultSet.next()){
-
-                //temp[i] = Integer.valueOf(resultSet.getString("cpu_temperature").substring(1,3)).intValue()  ;
-                temp[i] = Integer.valueOf(resultSet.getString("cpu_used_rate")).intValue();
-                i ++;
-
+                CpuRate cpuRate = new CpuRate();
+                cpuRate.setXKey( resultSet.getString("collect_time") );
+                cpuRate.setYValue( resultSet.getString("cpu_used_rate")  );
+                list.add(cpuRate);
             }
-
         }catch (Exception e ){
             e.printStackTrace();
         }
-        temperature.setData(temp);
-        temperature.setName(strIp);
-        return  temperature;
+        return  list;
+    }
+
+
+    public List<MemoryRate> getLastMemoryUsedRateByIp(String strIp){
+        List<MemoryRate> list = new ArrayList<>();
+        try{
+            ResultSet resultSet = temperatureDao.lastMemoryUsedRate(conn,strIp);
+            while (resultSet.next()){
+                MemoryRate memoryRate = new MemoryRate();
+                memoryRate.setXKey( resultSet.getString("collect_time") );
+                memoryRate.setYValue( resultSet.getString("memory_used_rate")  );
+                list.add(memoryRate);
+            }
+        }catch (Exception e ){
+            e.printStackTrace();
+        }
+        return  list;
+    }
+
+
+    public List<GacProcess> getLastGacProcessByIp(String strIp){
+        List<GacProcess> list = new ArrayList<>();
+        try{
+            ResultSet resultSet = temperatureDao.lastGacProcessUsedRate(conn,strIp);
+            while (resultSet.next()){
+                GacProcess gacProcess = new GacProcess();
+                gacProcess.setXKey( resultSet.getString("collect_time") );
+                gacProcess.setYValue( resultSet.getString("gac_process")  );
+                list.add(gacProcess);
+            }
+        }catch (Exception e ){
+            e.printStackTrace();
+        }
+        return  list;
     }
 
 }

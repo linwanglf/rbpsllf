@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 public class Temperature {
 
-    private String name;
-    private int[] data;
+    private String xKey;
+    private String yValue;
 
 }

@@ -261,11 +261,31 @@
 
   <servlet>
     <servlet-name>CpuUsedRateServlet</servlet-name>
-    <servlet-class>com.java.web.CpuUsedRateServlet</servlet-class>
+    <servlet-class>com.java.web.CpuRateServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CpuUsedRateServlet</servlet-name>
-    <url-pattern>/cpuusedrate</url-pattern>
+    <url-pattern>/cpu</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>MemoryUsedRateServlet</servlet-name>
+    <servlet-class>com.java.web.MemoryRateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemoryUsedRateServlet</servlet-name>
+    <url-pattern>/memory</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>GacProcessServlet</servlet-name>
+    <servlet-class>com.java.web.GacProcessServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GacProcessServlet</servlet-name>
+    <url-pattern>/gacprocess</url-pattern>
   </servlet-mapping>
 
 

@@ -23,7 +23,7 @@ public class TemperatureDao {
      * @throws Exception
      */
     public ResultSet lastCpuTemperature(Connection conn, String strIP )throws Exception{
-        String strSql = " select cpu_temperature  from t_collect_info where ip= ?  order by collect_time DESC limit  10 ";
+        String strSql = " select collect_time,cpu_temperature  from t_collect_info where ip= ?  order by collect_time DESC limit  20 ";
         log.info( DateUtil.getCurrent() + " strSql : " + strSql );
         PreparedStatement pstmt=conn.prepareStatement(strSql);
         pstmt.setString(1,strIP );
@@ -38,7 +38,7 @@ public class TemperatureDao {
      * @throws Exception
      */
     public ResultSet lastCpuUsedRate(Connection conn,String strIP )throws Exception{
-        String strSql = " select cpu_used_rate  from t_collect_info where ip= ?  order by collect_time DESC  limit  10 ";
+        String strSql = " select collect_time,cpu_used_rate  from t_collect_info where ip= ?  order by collect_time DESC  limit  20 ";
         log.info( DateUtil.getCurrent() + " strSql : " + strSql );
         PreparedStatement pstmt=conn.prepareStatement(strSql);
         pstmt.setString(1,strIP );
@@ -53,7 +53,7 @@ public class TemperatureDao {
      * @throws Exception
      */
     public ResultSet lastMemoryUsedRate(Connection conn,String strIP )throws Exception{
-        String strSql = " select memory_used_rate  from t_collect_info where ip= ?  order by collect_time DESC limit  10 ";
+        String strSql = " select collect_time,memory_used_rate  from t_collect_info where ip= ?  order by collect_time DESC limit  20 ";
         log.info( DateUtil.getCurrent() + " strSql : " + strSql );
         PreparedStatement pstmt=conn.prepareStatement(strSql);
         pstmt.setString(1,strIP );
@@ -68,7 +68,7 @@ public class TemperatureDao {
      * @throws Exception
      */
     public ResultSet lastGacProcessUsedRate(Connection conn,String strIP )throws Exception{
-        String strSql = " select gac_process  from t_collect_info where ip= ?  order by collect_time DESC limit  10 ";
+        String strSql = " select collect_time,gac_process  from t_collect_info where ip= ?  order by collect_time DESC limit  20 ";
         log.info( DateUtil.getCurrent() + " strSql : " + strSql );
         PreparedStatement pstmt=conn.prepareStatement(strSql);
         pstmt.setString(1,strIP );

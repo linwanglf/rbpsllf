@@ -1,5 +1,6 @@
 package com.java.web;
 
+import com.alibaba.fastjson.JSONArray;
 import com.google.gson.Gson;
 import com.java.manager.TemperatureManager;
 import com.java.model.Temperature;
@@ -37,17 +38,14 @@ public class TemperatureServlet extends HttpServlet {
             throws ServletException, IOException {
 
         request.setCharacterEncoding("utf-8");
-        String strIp = request.getParameter("ip");
+        String strIp =  request.getParameter("ipAddress");
         System.out.println("strIP "  + strIp );
 
-        Temperature temperatureGZ = temperatureManager.getLastTemperatureByIp( strIp);
-        List<Temperature > list = new ArrayList<>();
-        list.add(temperatureGZ);
-
-        Gson gson = new Gson();
-        String data = gson.toJson(list);
+        List<Temperature> list = temperatureManager.getLastTemperatureByIp( strIp);
+        JSONArray jsonArray = new JSONArray();
         PrintWriter printWriter = response.getWriter();
-        printWriter.print(data);
+        System.out.println(jsonArray.toJSONString(list));
+        printWriter.print(jsonArray.toJSONString(list));
         printWriter.flush();
         printWriter.close();
     }

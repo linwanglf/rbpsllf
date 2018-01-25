@@ -1,0 +1,153 @@
+.header-top {
+	min-width: 1140px;
+	padding: 5px 0;
+	background: #393D49;
+	color: #fff;
+	line-height: 25px;
+}
+
+.header-top a {
+	margin: 0 5px;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	text-align: center;
+	background: rgba(108, 115, 136, 0.77);
+	color: #fff;
+	border-radius: 50%;
+}
+
+.header-top a:hover {
+	background: rgba(129, 135, 150, 0.77);
+}
+
+.header-nav{
+	min-width: 1140px;
+}
+
+.layui-nav{
+	width: 1140px;
+	margin: 0 auto;
+	padding: 0
+}
+
+.banner-panel {
+	position: relative;
+	min-width: 1140px;
+}
+
+.banner {
+	background-image: url(/images/banner.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	height: 348px;
+}
+
+.tag-wrap{
+	padding: 40px 0;
+	min-width: 1140px;
+}
+
+.tag-panel {
+	width: 1140px;
+	margin: 0 auto;
+	font-size: 0
+}
+
+.even{
+	background: #f4f4f4
+}
+
+.tag-panel .content{
+	display: inline-block;
+	width: 50%;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 38px;
+}
+
+.tag-panel .chart{
+	margin: 0 auto;
+}
+
+.tag-panel .content h2{
+	font-size: 17px;
+	color: #333
+}
+
+.tag-panel .content .desc{
+	font-size: 14px;
+	color: #777
+}
+
+footer{
+	min-width: 1140px;
+	padding: 10px 0;
+	background: #393D49; 
+}
+
+.footer-panel{
+	width: 1140px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 13px;
+	line-height: 34px;
+	text-align: center;
+}
+
+/** dashboard **/
+.table-container{
+	padding-left: 3px;
+	font-size: 0
+}
+
+.table-panel{
+	display: inline-block;
+	margin-left: -1px;
+	margin-top: -1px;
+	vertical-align: top;
+}
+
+.table-panel .table{
+	
+	border: 1px solid #e2e2e2;
+	text-align: center
+}
+
+.table-panel .table .table-thead, .table-panel .table .table-tbody{
+	padding: 5px 0;
+	border-bottom: 1px solid #e2e2e2;
+	font-size: 0;
+}
+
+.table-panel .table .table-thead:last-child{
+	border-bottom: 0;
+}
+
+.table-panel .table .table-thead:first-child{
+	line-height: 28px;
+}
+
+.table-panel .table .table-tbody:last-child{
+	border-bottom: 0
+}
+
+.table-panel .table .table-td{
+	display: inline-block;
+	font-size: 14px;
+	vertical-align: middle;
+}
+
+.col-6 {
+	width: 16.6666%
+}
+
+.col-7 {
+	width: 14.2857%
+}
+
+.col-3 {
+	width: 33.3333%
+}
