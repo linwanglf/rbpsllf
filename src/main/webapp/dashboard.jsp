@@ -19,18 +19,23 @@
 			<div class="layui-layout layui-layout-admin">
 				<header class="layui-header header">
 					<div class="layui-main">
-						<div class="layui-form component">
-
-					    </div>
-					    <h1 class="title">发动机本部设备运营大盘监控</h1>
+					    <h1 class="title">广汽传祺动力总成设备运营大盘监控平台</h1>
 					</div>
 				</header>
 			</div>
 
 			<select name="ipaddress" id="ipaddress"  >
-				<option value="192.168.3.1" selected>192.168.3.1</option>
+				<option value="192.168.3.36" selected>192.168.3.36</option>
+				<option value="192.168.3.1" > 192.168.3.1</option>
 				<option value="192.168.3.2" > 192.168.3.2</option>
 				<option value="192.168.3.3" >192.168.3.3</option>
+				<option value="192.168.3.4" > 192.168.3.4</option>
+				<option value="192.168.3.5" > 192.168.3.5</option>
+				<option value="192.168.3.6" >192.168.3.6</option>
+				<option value="192.168.3.7" >192.168.3.7</option>
+				<option value="192.168.3.8" > 192.168.3.8</option>
+				<option value="192.168.3.9" > 192.168.3.9</option>
+				<option value="192.168.3.10" >192.168.3.10</option>
 			</select>
 
 			<table align="center">
@@ -51,7 +56,11 @@
 				</td>
 			</tr>
 			</table>
+			<div class="layui-header header">
+				<h1 class="title" align="center" color="#fb9104" >设计开发：广州思歌智能科技</h1>
+			</div>
     	</div>
+
 	<script type="text/javascript" src="/script/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="/script/kapok.js"></script>
 	<script type="text/javascript" src="/static/layui2/layui.js"></script>
