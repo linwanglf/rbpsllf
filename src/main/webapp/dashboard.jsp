@@ -57,7 +57,7 @@
 			</tr>
 			</table>
 			<div class="layui-header header">
-				<h1 class="title" align="center" color="#fb9104" >设计开发：广州思歌智能科技</h1>
+				<h4 class="title" align="center" color="#fb9104" >版权所有 广汽传祺动力总成设备科 && 联合开发 思歌智能科技</h4>
 			</div>
     	</div>
 
