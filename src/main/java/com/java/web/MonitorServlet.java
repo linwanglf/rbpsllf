@@ -79,9 +79,6 @@ public class MonitorServlet extends HttpServlet {
         TerminalInfo terminalInfo = new TerminalInfo();
         try {
 
-
-
-
             terminalInfo.setIp(request.getParameter("ip"));
             terminalInfo.setHostName(request.getParameter("hostname"));
             terminalInfo.setCpuUsedRate(request.getParameter("cpu_used_rate"));
