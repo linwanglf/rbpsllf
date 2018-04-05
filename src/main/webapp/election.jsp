@@ -78,8 +78,6 @@
                       <input type="radio" name="present" value="present03">选择
                   </td>
               </tr>
-
-
           </table>
 
         <a href="javascript:present1Selected()" class="easyui-linkbutton" iconCls="icon-ok" >保存</a>

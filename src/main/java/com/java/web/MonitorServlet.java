@@ -1,5 +1,6 @@
 package com.java.web;
 
+import com.java.dao.RfidInfoDao;
 import com.java.dao.TerminalInfoDao;
 import com.java.model.TerminalInfo;
 import com.java.util.DatabaseUtil;
@@ -25,6 +26,7 @@ import java.sql.Connection;
 public class MonitorServlet extends HttpServlet {
 
     TerminalInfoDao terminalInfoDao = new TerminalInfoDao();
+    RfidInfoDao rfidInfoDao = new RfidInfoDao();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println( "Start Collect Information from Terminal");
@@ -33,7 +35,9 @@ public class MonitorServlet extends HttpServlet {
         String action=request.getParameter("action");
         if("TemperatureLine".equals(action)){
             displayLine(request, response);
-        }{
+        }if("rfid".equals(action)){
+            saverfid( request, response );
+        }else{
             save(request, response );
         }
     }
@@ -75,6 +79,9 @@ public class MonitorServlet extends HttpServlet {
         TerminalInfo terminalInfo = new TerminalInfo();
         try {
 
+
+
+
             terminalInfo.setIp(request.getParameter("ip"));
             terminalInfo.setHostName(request.getParameter("hostname"));
             terminalInfo.setCpuUsedRate(request.getParameter("cpu_used_rate"));
@@ -92,6 +99,24 @@ public class MonitorServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void  saverfid( HttpServletRequest request , HttpServletResponse response ){
+
+        Connection conn = DatabaseUtil.getConnection();
+        try {
+            String epcstring = request.getParameter("epcstring");
+            System.out.println("epcstring" +  epcstring );
+            if (conn == null) {
+                System.out.println(" Conn is Null ");
+            }
+            int insert = rfidInfoDao.save(conn, epcstring);
+            ResponseUtil.write(response, "Receive from Terminal");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

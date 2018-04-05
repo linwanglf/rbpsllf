@@ -46,7 +46,7 @@ public class UploadExcelServlet extends HttpServlet {
             List<FileItem> list = upload.parseRequest(request); //将请求转换成FileItem List
             for (int i = 0; i < list.size(); i++) {
                 FileItem item = list.get(i);//
-                if (item.getName().endsWith(".xls")||item.getName().endsWith(".xlsx")) {
+                if (item.getName().endsWith(".xls")||item.getName().endsWith(".xlsx") || item.getName().endsWith(".pdf")) {
                     // 说明是文件,不过这里最好限制一下
                     List<List<String>> result = ExcelUtil.importXlsx(item.getInputStream());//读取记录,item转换成输入流
                     scoreManager.importExcelDbList(result); //导入数据库

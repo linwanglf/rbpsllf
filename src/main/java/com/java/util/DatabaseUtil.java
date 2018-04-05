@@ -16,8 +16,8 @@ public class DatabaseUtil {
     static{
         try {
             String driver = "com.mysql.jdbc.Driver";
-//            String url="jdbc:mysql://127.0.0.1:3306/sgopdb";
-            String url="jdbc:mysql://192.168.3.7:3306/sgopdb";
+            String url="jdbc:mysql://127.0.0.1:3306/sgopdb";
+//            String url="jdbc:mysql://192.168.3.7:3306/sgopdb";
             String name="root";
             String pwd="root";
 
