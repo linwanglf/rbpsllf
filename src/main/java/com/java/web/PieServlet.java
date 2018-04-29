@@ -34,7 +34,7 @@ public class PieServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //log.info( DateUtil.getCurrent()  + " Start PieServlet  ");
+        log.info( DateUtil.getCurrent()  + " Start PieServlet  ");
         request.setCharacterEncoding("utf-8");
 
         /**

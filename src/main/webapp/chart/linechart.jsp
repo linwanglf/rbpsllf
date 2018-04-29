@@ -16,15 +16,15 @@
     <link rel="stylesheet" href="../jquery-easyui-1.3.3/themes/icon.css" type="text/css"/>
 
     <!--highchart基础图 依赖的jquery在上面已经引入-->
-    <script type="text/javascript" src="../highchart/code/highcharts.js"></script>
-    <script type="text/javascript" src="../highchart/code/highcharts-more.js"></script>
-    <script type="text/javascript" src="../highchart/code/modules/exporting.js"></script>　
+    <script type="text/javascript" src="/js/code/highcharts.js"></script>
+    <script type="text/javascript" src="/js/code/highcharts-more.js"></script>
+    <script type="text/javascript" src="/js/code/modules/exporting.js"></script>　
+    <%--<script type="text/javascript" src="/js/highcharts-more.js"></script>　--%>
     <!--highchart基础图-->
 
     <script type="text/javascript">
         function displaychart(){
             $.getJSON("/chart/linechart" , function(jsondata) {
-//                var jsondata = [{"data": [1, 0, 4, 8, 20, 30, 22, 33, 20, 18, 29], "name": "GuangZhou"}];
                 var chart = new Highcharts.Chart('container', {
                     title: {
                         text: '不同城市的月平均气温',
@@ -56,7 +56,7 @@
                         verticalAlign: 'middle',
                         borderWidth: 0
                     },
-                    series: jsondata
+                    series:jsondata
                 });
             });
         }
