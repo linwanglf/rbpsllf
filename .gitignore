@@ -1,3 +1,4 @@
+*.log
 *.jar
 *.war
 *.class
@@ -16,10 +17,7 @@ target/
 .metadata/
 .idea/
 logs/
-*.log
 dependency-reduced-pom.xml
 /bin
 git
 git.pub
-*.idea
-workspace.xml
